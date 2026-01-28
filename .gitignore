@@ -1,0 +1,66 @@
+# Application logs
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# Cache files
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+# Configuration files (contain sensitive data)
+application/config/database.php
+application/config/config.php
+application/config/email.php
+
+# User uploads
+uploads/*
+!uploads/index.html
+!uploads/multi_employee_sample.csv
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.sql
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Node modules (if any)
+node_modules/
+
+# Composer vendor (if any)
+vendor/
+
+# Database backups
+uploads/db_backup/*
+uploads/db_temp/*
+
+# Sensitive uploads
+uploads/documents/*
+uploads/images/*
+uploads/attachments/*
+uploads/signatures/*
+uploads/qr_code/*
+uploads/certificates/*

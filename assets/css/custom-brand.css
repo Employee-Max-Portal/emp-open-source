@@ -1,0 +1,134 @@
+/* Custom Brand Theme - #50a7e3 */
+
+/* Text Colors Override */
+.text-warning {
+    color: #50a7e3 !important;
+}
+
+/* Navigation */
+ul.nav-main > li.nav-active > a {
+    box-shadow: 2px 0 0 #50a7e3 inset;
+}
+
+ul.nav-main li a i {
+    color: #50a7e3;
+}
+
+html.sidebar-light:not(.dark) ul.nav-main > li.nav-active > a {
+    color: #50a7e3;
+}
+
+ul.nav-main li .nav-children li.nav-active > a {
+    color: #50a7e3;
+}
+
+/* Header */
+html.sidebar-light:not(.dark) .header .logo-env {
+    background: linear-gradient(to right, #50a7e3 0%, #fff 100%) !important;
+}
+
+.page-header .page-title-icon {
+    border: 1px solid #50a7e3;
+}
+
+.headers-line {
+    color: #50a7e3;
+}
+
+/* Tabs */
+.tabs-custom .nav-tabs {
+    margin: 0px;
+}
+
+.tabs-custom .nav-tabs > li.active > a:before {
+    background: #50a7e3;
+}
+
+.tabs-custom .nav-tabs > li > a:after {
+    background: #50a7e3;
+}
+
+/* Panels */
+.panel-heading {
+    border-bottom: 2px solid #50a7e3;
+}
+
+.panel-group .panel-accordion .panel-heading a {
+    color: #50a7e3;
+}
+
+/* Pagination */
+.pagination > li.active a {
+    background-color: #50a7e3;
+}
+
+/* Loading */
+.ring-loader {
+    border: 3px solid #3c3c3c;
+    color: #50a7e3;
+    text-shadow: 0 0 10px #50a7e3;
+}
+
+.ring-loader:before {
+    border-top: 3px solid #50a7e3;
+    border-right: 3px solid #50a7e3;
+}
+
+.ring-loader span:before {
+    background-color: #50a7e3;
+    box-shadow: 0 0 20px #50a7e3;
+}
+
+/* Scrollbar */
+html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
+    background: #50a7e3;
+}
+
+/* Select2 */
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+    background-color: #50a7e3;
+}
+
+/* Profile */
+.profile-head::before {
+    background: #3f0000;
+}
+
+.profile-head ul li .icon-holder:before {
+    background: #50a7e3;
+}
+
+.profile-head ul li .icon-holder i:before {
+    color: #dddddd;
+}
+
+.mt-md {
+    color: #50a7e3;
+}
+
+/* Mailbox */
+.mailbox .nav-pills > li.active > a,
+.mailbox .nav-pills > li.active > a:hover,
+.mailbox .nav-pills > li.active > a:focus {
+    border-left: 3px solid #50a7e3;
+}
+
+.mailbox .nav-pills a .label {
+    background: #50a7e3;
+}
+
+/* User Dropdown */
+.userbox.open .dropdown-menu ul > li:not(.user-p-box) a:hover {
+    background: #50a7e3;
+}
+
+/* Sidebar Fixed */
+@media only screen and (min-width: 768px) {
+    html.fixed .sidebar-left {
+        bottom: 0;
+        left: 0;
+        padding-bottom: 0px;
+        position: fixed;
+        top: 60px;
+    }
+}

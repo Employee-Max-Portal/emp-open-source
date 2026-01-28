@@ -1,0 +1,60 @@
+<?php
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+
+class Profile_model extends MY_Model
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    // moderator staff all information
+    public function staffUpdate($data)
+    {
+        $update_data = array(
+            'name' => $data['name'],
+            'sex' => $data['sex'],
+            'religion' => $data['religion'],
+            'blood_group' => $data['blood_group'],
+            'birthday' => $data["birthday"],
+            'mobileno' => $data['mobile_no'],
+            'telegram_id' => $data['telegram_id'],
+            'present_address' => $data['present_address'],
+            'permanent_address' => $data['permanent_address'],
+            'photo' => $this->app_lib->upload_image('staff'),
+            'email' => $data['email'],
+        );
+        if (is_admin_loggedin()) {
+            $update_data['joining_date'] = date("Y-m-d", strtotime($data['joining_date']));
+            $update_data['designation'] = $data['designation_id'];
+            $update_data['department'] = $data['department_id'];
+            $update_data['qualification'] = $data['qualification'];
+        }
+        // UPDATE ALL INFORMATION IN THE DATABASE
+        $this->db->where('id', get_loggedin_user_id());
+        $this->db->update('staff', $update_data);
+    }
+
+    public function bankSave($data)
+    {
+        $inser_data = array(
+            'staff_id' => $data['staff_id'],
+            'bank_name' => $data['bank_name'],
+            'holder_name' => $data['holder_name'],
+            'bank_branch' => $data['bank_branch'],
+            'bank_address' => $data['bank_address'],
+            'ifsc_code' => $data['ifsc_code'],
+            'account_no' => $data['account_no'],
+        );
+        if (isset($data['bank_id'])) {
+            $this->db->where('id', $data['bank_id']);
+            $this->db->update('staff_bank_account', $inser_data);
+        } else {
+            $this->db->insert('staff_bank_account', $inser_data);
+        }
+    }
+}
+

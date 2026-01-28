@@ -1,0 +1,12 @@
+/* Hidden scrollbar styles */
+.col-md-3::-webkit-scrollbar,
+.col-md-9::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.col-md-3,
+.col-md-9 {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
