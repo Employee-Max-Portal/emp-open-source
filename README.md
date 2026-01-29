@@ -103,11 +103,11 @@ EMP operates as a modular employee portal built on proven technologies:
 
 **Backend Framework**
 - PHP 7.4+ with CodeIgniter 3.x
-- MySQL 5.7+ with multi-database support
-- Apache/Nginx with mod_rewrite
+- MySQL 8.0+ with multi-database support
+- Apache2 with mod_rewrite
 
 **Frontend Technologies**
-- Bootstrap 4 responsive framework
+- Bootstrap 3.3.6 responsive framework
 - jQuery and vanilla JavaScript
 - Chart.js for data visualization
 - Custom CSS theming system
@@ -116,9 +116,6 @@ EMP operates as a modular employee portal built on proven technologies:
 - JWT token-based authentication
 - RESTful API architecture
 - PHPMailer for email services
-- SMS gateway integration
-- Firebase Cloud Messaging (FCM)
-- Telegram Bot API integration
 
 **Development & Deployment**
 - Git version control
@@ -304,9 +301,6 @@ EMP welcomes contributions from enterprise developers and organizations. Contrib
 - Follow pull request template and review process
 - Maintain backward compatibility for existing installations
 
-## License
-
-This project is licensed under the MIT License, enabling both open source and commercial use while maintaining attribution requirements.
 
 ---
 
