@@ -173,10 +173,10 @@ class Employee extends Admin_Controller
 									</tr>
 								</table>
                                 <p style='text-align:center; margin:30px 0;'>
-                                  <a href='https://emp.com.bd/' style='background-color:#0054a6; color:#ffffff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:16px; display:inline-block;'>Click Here to Login</a>
+                                  <a href='<?php echo base_url(); ?>' style='background-color:#0054a6; color:#ffffff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:16px; display:inline-block;'>Click Here to Login</a>
                                 </p>
                                 <p>If the button doesn't work, you can also copy and paste this link into your browser:</p>
-                                <p><a href='https://emp.com.bd/'>https://emp.com.bd/</a></p>
+                                <p><a href='<?php echo base_url(); ?>'><?php echo base_url(); ?></a></p>
                                 <p style='margin-top:30px;'>Thank you,<br><strong>EMP Team</strong></p>
                                 <p style='text-align:center; font-size:14px; color:#888; margin-top:40px;'>
                                   From <strong>Team EMP</strong> with <span style='color:#e63946;'>&#10084;&#65039;</span>

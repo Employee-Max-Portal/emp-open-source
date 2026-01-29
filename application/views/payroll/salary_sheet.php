@@ -858,7 +858,7 @@ function getSalaryCertificate(staff_id, month, year) {
 function printDescription() {
     const content = document.getElementById('details_view_tray').innerHTML;
     const printWindow = window.open('', '', 'width=800,height=600');
-    const backgroundUrl = 'https://emp.com.bd/uploads/app_image/pad.jpg';
+    const backgroundUrl = 'uploads/app_image/pad.jpg';
 
     const html = `
     <html>
@@ -1024,7 +1024,7 @@ function printBankLetter() {
         grandTotal += ' ' + currencySymbol;
     }
 
-    const backgroundUrl = 'https://emp.com.bd/uploads/app_image/pad.jpg';
+    const backgroundUrl = 'uploads/app_image/pad.jpg';
 
     const html = `
     <html>
@@ -1304,7 +1304,7 @@ function printCashLetter() {
         grandTotal += ' ' + currencySymbol;
     }
 
-    const backgroundUrl = 'https://emp.com.bd/uploads/app_image/pad.jpg';
+    const backgroundUrl = 'uploads/app_image/pad.jpg';
 
     const html = `
     <html>
