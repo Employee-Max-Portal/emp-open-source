@@ -14,7 +14,14 @@ application/config/config.php
 application/config/email.php
 
 # User uploads
-uploads/*
+uploads/db_backup/*
+uploads/db_temp/*
+uploads/documents/*
+uploads/images/*
+uploads/attachments/*
+uploads/signatures/*
+uploads/qr_code/*
+uploads/certificates/*
 !uploads/index.html
 !uploads/multi_employee_sample.csv
 
@@ -40,7 +47,7 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup
-*.sql
+# *.sql
 
 # Environment files
 .env
