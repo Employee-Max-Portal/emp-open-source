@@ -155,7 +155,7 @@ EMP implements enterprise-grade security architecture:
 
 ### System Requirements
 - PHP 7.4 or higher with required extensions
-- MySQL 5.7 or higher
+- MySQL 8.0 or higher
 - Apache with mod_rewrite enabled or Nginx
 - 2GB RAM minimum, 4GB recommended
 - 10GB disk space for base installation
