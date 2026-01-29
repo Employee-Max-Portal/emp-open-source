@@ -187,7 +187,7 @@ chmod -R 755 uploads/ application/logs/
 5. **Access System**
 - Visit your domain (e.g., http://yourserver.com/emp-open-source/)
 - Login with default admin credentials:
-  - **Username**: `ssuperman`
+  - **Username**: `superman`
   - **Password**: `superman`
 - System works immediately - no additional configuration needed
 
