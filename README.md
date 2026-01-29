@@ -176,7 +176,7 @@ cp application/config/database.php.example application/config/database.php
 
 3. **Database Schema Import**
 ```bash
-mysql -u username -p database_name < sql/emp.sql
+mysql -u username -p emp < sql/emp.sql
 ```
 
 4. **Set Permissions**
