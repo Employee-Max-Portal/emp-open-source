@@ -617,6 +617,38 @@ function currencyFormat($amount = 0)
     return $value;
 }
 
+// Indian money format function
+function moneyFormatIndia($amount)
+{
+    $amount = floatval($amount);
+    if ($amount < 0) {
+        $negative = true;
+        $amount = abs($amount);
+    } else {
+        $negative = false;
+    }
+    
+    $amount = number_format($amount, 2, '.', '');
+    $exploded = explode('.', $amount);
+    $rupees = $exploded[0];
+    $paise = $exploded[1];
+    
+    $last_three = substr($rupees, -3);
+    $remaining = substr($rupees, 0, -3);
+    
+    if ($remaining) {
+        $last_three = ',' . $last_three;
+    }
+    
+    $formatted = preg_replace('/\B(?=(\d{2})+(?!\d))/', ',', $remaining) . $last_three;
+    
+    if ($paise != '00') {
+        $formatted .= '.' . $paise;
+    }
+    
+    return ($negative ? '-' : '') . $formatted;
+}
+
 /**
  * Generate unique ID for leave, fund requisition, and advance salary
  * @param string $type - 'leave', 'fund_requisition', or 'advance_salary'
