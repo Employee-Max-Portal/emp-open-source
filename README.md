@@ -171,7 +171,7 @@ cd emp-open-source
 2. **Database Configuration**
 ```bash
 cp application/config/database.php.example application/config/database.php
-# Configure database credentials
+# Edit database.php with your MySQL credentials
 ```
 
 3. **Database Schema Import**
@@ -179,17 +179,15 @@ cp application/config/database.php.example application/config/database.php
 mysql -u username -p database_name < sql/emp.sql
 ```
 
-4. **System Configuration**
+4. **Set Permissions**
 ```bash
 chmod -R 755 uploads/ application/logs/
-cp application/config/config.php.example application/config/config.php
-# Configure base URL and encryption keys
 ```
 
-5. **Initial Access**
-- Access platform at configured domain
-- Default admin credentials in installation documentation
-- Complete initial setup wizard
+5. **Access System**
+- Visit your domain (e.g., http://yourserver.com/emp-open-source/)
+- System works immediately - no additional configuration needed
+- Default admin credentials are in the database
 
 ## Basic Usage Flow
 
