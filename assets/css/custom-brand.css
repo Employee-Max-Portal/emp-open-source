@@ -23,9 +23,6 @@ ul.nav-main li .nav-children li.nav-active > a {
 }
 
 /* Header */
-html.sidebar-light:not(.dark) .header .logo-env {
-    background: linear-gradient(to right, #50a7e3 0%, #fff 100%) !important;
-}
 
 .page-header .page-title-icon {
     border: 1px solid #50a7e3;

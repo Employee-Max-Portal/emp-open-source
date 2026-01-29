@@ -227,8 +227,7 @@ html.sidebar-light:not(.dark) .header .logo-env {
 <header class="header">
 	<div class="logo-env">
 		<a href="<?php echo base_url('dashboard');?>" class="logo">
-			<!--<img src="<?=$this->application_model->getBranchImage(get_loggedin_branch_id(), 'logo-small')?>" height="40">-->
-			<img src="<?php echo base_url();?>uploads/app_image/emp-logo.png" height="40">
+			<img src="<?php echo base_url();?>uploads/app_image/emp-logo.png" height="50">
 		</a>
 
 		<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
