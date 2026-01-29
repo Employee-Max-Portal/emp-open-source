@@ -10,7 +10,7 @@ application/cache/*
 
 # Configuration files (contain sensitive data)
 application/config/database.php
-application/config/config.php
+# application/config/config.php - now included for easy setup
 application/config/email.php
 
 # User uploads
