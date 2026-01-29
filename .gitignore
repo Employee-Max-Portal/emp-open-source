@@ -10,10 +10,9 @@ application/cache/*
 
 # Configuration files (contain sensitive data)
 application/config/database.php
-# application/config/config.php - now included for easy setup
 application/config/email.php
 
-# User uploads
+# User uploads (keep structure, ignore user content)
 uploads/db_backup/*
 uploads/db_temp/*
 uploads/documents/*
@@ -22,13 +21,11 @@ uploads/attachments/*
 uploads/signatures/*
 uploads/qr_code/*
 uploads/certificates/*
-!uploads/index.html
-!uploads/multi_employee_sample.csv
+!uploads/*/index.html
 
 # Temporary files
 *.tmp
 *.temp
-*.log
 
 # IDE files
 .vscode/
@@ -47,27 +44,11 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup
-# *.sql
 
 # Environment files
 .env
 .env.local
 .env.production
 
-# Node modules (if any)
-node_modules/
-
-# Composer vendor (if any)
-vendor/
-
-# Database backups
-uploads/db_backup/*
-uploads/db_temp/*
-
-# Sensitive uploads
-uploads/documents/*
-uploads/images/*
-uploads/attachments/*
-uploads/signatures/*
-uploads/qr_code/*
-uploads/certificates/*
+# Logs
+*.log
