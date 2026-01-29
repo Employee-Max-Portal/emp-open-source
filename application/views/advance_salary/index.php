@@ -66,9 +66,7 @@
 							<th><?=translate('applied_on')?></th>
 							<th style="text-align:center;"><?=translate('manager approval')?></th>
 							<th style="text-align:center;"><?=translate('payment_status')?></th>
-							<?php if (get_permission('advance_salary_manage', 'is_add') || get_permission('advance_salary_manage', 'is_delete')): ?>
 							<th><?=translate('action')?></th>
-							<?php endif; ?>
 						</tr>
 					</thead>
 					<tbody>
@@ -107,8 +105,6 @@
 									echo '<span class="label label-warning-custom">' . translate('in review') . '</span>';
 								?>
 							</td>
-							
-							<?php if (get_permission('advance_salary_manage', 'is_add') || get_permission('advance_salary_manage', 'is_delete')): ?>
 							<td>
 							<?php if (get_permission('advance_salary_manage', 'is_add')): ?>
 								<!--modal dialogbox-->
@@ -121,7 +117,6 @@
 								<?php echo btn_delete('advance_salary/delete/' . $row['id']);?>
 							<?php endif; ?>
 							</td>
-							<?php endif; ?>
 						</tr>
 						<?php }?>
 					</tbody>

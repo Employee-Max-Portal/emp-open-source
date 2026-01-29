@@ -28,7 +28,7 @@
 				<h4 class="panel-title"><?=translate('select_ground')?></h4>
 			<?php if (get_permission('leave_manage', 'is_add')): ?>
 				<div class="panel-btn">
-					<a href="javascript:void(0);" onclick="mfp_modal('#addLeaveModal')" class="btn btn-default btn-circle" >
+					<a href="javascript:void(0);" id="addLeave" class="btn btn-default btn-circle" >
 						<i class="fas fa-plus-circle"></i> Add Leave
 					</a>
 				</div>
@@ -128,9 +128,7 @@
 							<th><?=translate('days')?></th>
                             <th><?=translate('apply_date')?></th>
 							<th class="no-sort"><?=translate('status')?></th>
-							<?php if (get_permission('leave_manage', 'is_add') || get_permission('leave_manage', 'is_delete')): ?>
 							<th><?=translate('action')?></th>
-							<?php endif;?>
 						</tr>
 					</thead>
 					<tbody>
@@ -162,8 +160,6 @@
 								echo ($status);
 								?>
 							</td>
-							
-							<?php if (get_permission('leave_manage', 'is_add') || get_permission('leave_manage', 'is_delete')): ?>
 							<td>
 							<?php if (get_permission('leave_manage', 'is_add')) { ?>
 								<a href="javascript:void(0);" class="btn btn-circle icon btn-default" onclick="getApprovelLeaveDetails('<?=$row['id']?>')">
@@ -174,8 +170,6 @@
 								<?php echo btn_delete('leave/delete/' . $row['id']); ?>
 							<?php } ?>
 							</td>
-							
-							<?php endif;?>
 						</tr>
 						<?php } } ?>
 					</tbody>
@@ -209,6 +203,7 @@
 						$this->db->join('login_credential AS lc', 'lc.user_id = s.id');
 						$this->db->where('lc.active', 1);   // only active users
 						$this->db->where_not_in('lc.role', [1, 9, 11,12]);   // exclude super admin, etc.
+						$this->db->where_not_in('s.id', [49]);
 						$this->db->order_by('s.name', 'ASC');
 						$query = $this->db->get();
 

@@ -10,7 +10,7 @@
 	<!-- include stylesheet -->
 	<?php include 'stylesheet.php';?>
 
-	<?php /*
+	<?php
 	if(isset($headerelements)) {
 		foreach ($headerelements as $type => $element) {
 			if($type == 'css') {
@@ -28,7 +28,6 @@
 			}
 		}
 	}
-	*/
 	?>
 	<!--  -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">

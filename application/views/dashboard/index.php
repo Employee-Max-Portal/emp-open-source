@@ -1625,11 +1625,6 @@ $pending_attendance = $this->db->get()->result_array();
 
  	
 <!---Calendar Events -->
-<!-- FullCalendar CSS and JS -->
-<link rel="stylesheet" href="<?= base_url('assets/vendor/fullcalendar/fullcalendar.min.css') ?>">
-<script src="<?= base_url('assets/vendor/fullcalendar/lib/moment.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/fullcalendar/fullcalendar.min.js') ?>"></script>
-
  <div class="row">
      <div class="col-md-12">
          <div class="panel">
@@ -1640,7 +1635,7 @@ $pending_attendance = $this->db->get()->result_array();
  					</div>
  				</div>
  				<div class="panel-body">
-					<div id="event_calendar" style="min-height: 400px;"></div>
+					<div id="event_calendar"></div>
  				</div>
  			</div>
 			
@@ -2478,54 +2473,27 @@ $pending_attendance = $this->db->get()->result_array();
  
 <script>
 (function ($) {
-    // Wait for DOM and all scripts to load
-    $(document).ready(function() {
-        // Check if FullCalendar is loaded
-        if (typeof $.fn.fullCalendar === 'undefined') {
-            console.error('FullCalendar library is not loaded');
-            $('#event_calendar').html('<div class="alert alert-warning">Calendar library not loaded. Please refresh the page.</div>');
-            return;
-        }
-        
-        try {
-            $('#event_calendar').fullCalendar({
-                header: {
-                    left: 'prev,next,today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay,listWeek'
-                },
-                firstDay: 1,
-                droppable: false,
-                editable: true,
-                timezone: 'UTC',
-                height: 'auto',
-                //lang: '<?= $language ?>',
-                events: {
-                    url: "<?= base_url('event/getEventsList/') ?>",
-                    error: function() {
-                        console.error('Failed to load calendar events');
-                        $('#event_calendar').append('<div class="alert alert-info">No events to display or failed to load events.</div>');
-                    }
-                },
-                eventRender: function (event, element) {
-                    // Store the type as a data attribute for reliable access
-                    $(element).attr('data-event-type', event.type);
-                    $(element).on("click", function () {
-                        var eventType = $(this).attr('data-event-type');
-                        viewCalendarEvent(event.id, eventType);
-                    });
-                },
-                loading: function(bool) {
-                    if (bool) {
-                        $('#event_calendar').append('<div class="loading-indicator">Loading events...</div>');
-                    } else {
-                        $('.loading-indicator').remove();
-                    }
-                }
+    $('#event_calendar').fullCalendar({
+        header: {
+            left: 'prev,next,today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        firstDay: 1,
+        droppable: false,
+        editable: true,
+        timezone: 'UTC',
+        //lang: '<?= $language ?>',
+        events: {
+            url: "<?= base_url('event/getEventsList/') ?>"
+        },
+        eventRender: function (event, element) {
+            // Store the type as a data attribute for reliable access
+            $(element).attr('data-event-type', event.type);
+            $(element).on("click", function () {
+                var eventType = $(this).attr('data-event-type');
+                viewCalendarEvent(event.id, eventType);
             });
-        } catch (error) {
-            console.error('Error initializing FullCalendar:', error);
-            $('#event_calendar').html('<div class="alert alert-danger">Error loading calendar. Please check console for details.</div>');
         }
     });
 })(jQuery);

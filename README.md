@@ -167,19 +167,19 @@ EMP implements enterprise-grade security architecture:
 
 1. **Repository Setup**
 ```bash
-git clone https://github.com/yourusername/emp-opensource.git
-cd emp-opensource
+git clone https://github.com/Employee-Max-Portal/emp-open-source.git
+cd emp-open-source
 ```
 
 2. **Database Configuration**
 ```bash
 cp application/config/database.php.example application/config/database.php
-# Configure database credentials for EMP database
+# Configure database credentials
 ```
 
 3. **Database Schema Import**
 ```bash
-mysql -u username -p emp_database < database/schema/emp_core.sql
+mysql -u username -p database_name < sql/emp.sql
 ```
 
 4. **System Configuration**

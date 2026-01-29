@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<?php if (get_permission('todo', 'is_delete')): ?>
+		<?php if (get_permission('todo', 'is_add')): ?>
 		<section class="panel">
 			<header class="panel-heading">
 				<h4 class="panel-title"><?= translate('select_ground') ?></h4>

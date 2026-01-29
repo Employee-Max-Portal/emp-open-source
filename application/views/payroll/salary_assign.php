@@ -76,7 +76,7 @@
 						<h4 class="panel-title"><i class="fas fa-users" aria-hidden="true"></i> <?php echo translate('employee') . " " . translate('salary_assign'); ?></h4>
 					</header>
 					<div class="panel-body">
-						<div class="table-responsive mb-lg">
+						<div class="table-responsive mt-md mb-lg">
 							<table class="table table-bordered table-condensed mb-none">
 								<thead>
 									<tr>

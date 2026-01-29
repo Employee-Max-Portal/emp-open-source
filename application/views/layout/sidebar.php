@@ -14,7 +14,7 @@
 							<i class="icons icon-grid"></i><span><?= translate('dashboard') ?></span>
 						</a>
 						<ul class="nav nav-children">
-							<!-- Employee Dashboard -->
+							<!-- Employee Dashboard --> 
 							<li class="<?php if ($sub_page == 'dashboard/index') echo 'nav-active'; ?>">
 								<a href="<?= base_url('dashboard') ?>">
 									<span><i class="fas fa-caret-right" aria-hidden="true"></i> <?= translate('EMP dashboard') ?></span>
@@ -933,7 +933,7 @@
                                 </a>
                             </li>
 							 <!-- business_settings item -->
-							<?php } if (in_array(loggedin_role_id(), [1, 2, 3, 5])) { ?>
+							<?php } if (in_array(loggedin_role_id(), [1, 3, 5])) { ?>
                                     <li class="<?php if ($main_menu == 'branch') echo 'nav-active'; ?>">
                                         <a href="<?=base_url('branch')?>">
                                              <span><i class="fas fa-caret-right" aria-hidden="true"></i><?=translate('business_settings')?></span>

@@ -260,7 +260,7 @@
 					</div>
 				</div>
 				
-				<div class="form-group milestone-task-group">
+				<div class="form-group mt-md milestone-task-group">
 					<label class="col-md-3 control-label"><?=translate('milestone');?> <span class="required">*</span></label>
 					<div class="col-md-8">
 						<?php
@@ -272,7 +272,7 @@
 					</div>
 				</div>
 				<!-- Fund Task -->
-				<div class="form-group milestone-task-group">
+				<div class="form-group mt-md milestone-task-group">
 					<label class="col-md-3 control-label"><?=translate('task');?> <span class="required">*</span></label>
 					<div class="col-md-8">
 						<select name="task_id" id="task_id" class="form-control" data-plugin-selectTwo data-width="100%" required>

@@ -61,7 +61,9 @@
 												<th><?php echo translate('sl'); ?></th>
 												<th><?php echo translate('created time'); ?></th>
 												<th><?php echo translate('break_name'); ?></th>
+												<?php if (get_permission('breaks', 'is_edit') || get_permission('breaks', 'is_delete')): ?>
 												<th><?php echo translate('action'); ?></th>
+												<?php endif; ?>
 											</tr>
 										</thead>
 										<tbody>
@@ -74,13 +76,19 @@
 												<td><?php echo $count++; ?></td>
 												<td><?php echo html_escape($row['date_time']); ?></td>
 												<td><?php echo translate($row['name']); ?></td>
-												<td>
+												<?php if (get_permission('breaks', 'is_edit') || get_permission('breaks', 'is_delete')): ?>
+												<td>	
+												<?php if (get_permission('breaks', 'is_edit')): ?>
 													<a class="btn btn-default btn-circle icon" href="javascript:void(0);" data-toggle="tooltip" data-original-title="<?php echo translate('edit');?>"
 													onclick="getBreak_details('<?php echo html_escape($row['id']); ?>')">
 														<i class="fas fa-pen-nib"></i>
 													</a>
+													<?php endif; ?>
+													<?php if (get_permission('breaks', 'is_delete')): ?>
 													<?php echo btn_delete('employee/break_delete/' . $row['id']); ?>
+													<?php endif; ?>
 												</td>
+												<?php endif; ?>
 											</tr>
 										<?php
 												endforeach;

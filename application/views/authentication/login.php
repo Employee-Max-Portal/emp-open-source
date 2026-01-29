@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo translate('Login'); ?></title>
-    <link rel="shortcut icon" href="<?php echo base_url('uploads/app_image/sohub.png'); ?>">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.png');?>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/vendor/sweetalert/sweetalert-custom.css'); ?>">
@@ -285,23 +285,19 @@
     <div class="login-container">
         <div class="left-panel">
             <h1>Employee Max Portal</h1>
-            <p>Welcome to our secure portal. Access your dashboard with confidence.</p>
+            <p>Self-hosted workforce management system.</p>
             <div class="features">
                 <div class="feature-item">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="feature-text">Secure Authentication</div>
+                    <div class="feature-text">Secure authentication</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <div class="feature-text">24/7 System Access</div>
+                    <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+                    <div class="feature-text">Role-based access control</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="feature-text">Mobile Responsive</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
-                    <div class="feature-text">Data Protection</div>
+                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="feature-text">Built for reliability and transparency</div>
                 </div>
             </div>
 
@@ -325,8 +321,7 @@
                     <label for="password">Password</label>
                     <div class="input-wrapper">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" class="form-control" name="password" id="password" 
-                               placeholder="Enter your password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                         <button type="button" class="password-toggle" id="togglePassword">
                             <i class="fas fa-eye" id="eyeIcon"></i>
                         </button>
@@ -343,20 +338,6 @@
                     Sign In
                 </button>
             <?php echo form_close(); ?>
-            <div class="demo-section">
-                <p class="demo-text">Quick Demo Access:</p>
-                <div class="button-group">
-                    <button type="button" class="modern-btn btn-demo" onclick="fillDemo()">
-                        <i class="fas fa-user-circle btn-icon"></i>
-                        <span>Demo</span>
-                    </button>
-                    <button type="button" class="modern-btn btn-admin" onclick="fillAdmin()">
-                        <i class="fas fa-user-shield btn-icon"></i>
-                        <span>Admin</span>
-                    </button>
-                </div>
-            </div>
-            
         </div>
     </div>
     <script>
@@ -374,14 +355,28 @@
             }
         });
 
-        function fillDemo() {
+        function fillEmployee() {
             document.getElementById('username').value = 'user@demo-emp.com.bd';
             document.getElementById('password').value = '123456';
+            
+            // Toggle button styles
+            const employeeBtn = document.getElementById('employeeBtn');
+            const adminBtn = document.getElementById('adminBtn');
+            
+            employeeBtn.className = 'modern-btn btn-demo';
+            adminBtn.className = 'modern-btn btn-admin';
         }
 
         function fillAdmin() {
             document.getElementById('username').value = 'admin@demo-emp.com.bd';
             document.getElementById('password').value = '123456';
+            
+            // Toggle button styles
+            const employeeBtn = document.getElementById('employeeBtn');
+            const adminBtn = document.getElementById('adminBtn');
+            
+            employeeBtn.className = 'modern-btn btn-admin';
+            adminBtn.className = 'modern-btn btn-demo';
         }
     </script>
     <?php

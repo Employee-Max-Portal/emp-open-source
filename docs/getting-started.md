@@ -2,7 +2,36 @@
 
 ## Introduction
 
-This guide helps new users, managers, and admins quickly start using EMP (Employee Max Portal), developed by [SOHUB (Solution Hub Technologies)](https://sohub.com.bd/). It covers login, dashboard overview, tasks, notifications, and admin setup for proper configuration.
+This guide helps new users, managers, and admins quickly start using EMP (Employee Max Portal), developed by [SOHUB (Solution Hub Technologies)](https://sohub.com.bd/). It covers installation and basic usage.
+
+## Installation
+
+### System Requirements
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
+- Apache/Nginx web server
+- 2GB RAM minimum
+
+### Quick Installation (3 Steps)
+
+**Step 1: Clone Repository**
+```bash
+git clone https://github.com/sohub23/employeemaxportal.git
+cd employeemaxportal
+```
+
+**Step 2: Import Database**
+```bash
+mysql -u username -p database_name < sql/emp.sql
+```
+
+**Step 3: Configure Database**
+```bash
+cp application/config/database.php.example application/config/database.php
+# Edit database.php with your database credentials
+```
+
+That's it! Access your EMP installation at your domain.
 
 ## 1. Users – Step by Step
 

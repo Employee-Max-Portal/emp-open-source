@@ -443,6 +443,7 @@ html.sidebar-light:not(.dark) .header .logo-env {
 	</div>
 </header>
 
+
 <?php
 	$user_id = get_loggedin_user_id();
 	$staff_data = $this->db
@@ -1168,27 +1169,8 @@ function get_break_details(id) {
         }
     });
 }
-
-// Fix for modal close buttons
-$(document).ready(function() {
-    // Ensure modal-dismiss buttons work properly
-    $(document).off('click', '.modal-dismiss').on('click', '.modal-dismiss', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $.magnificPopup.close();
-    });
-});
 </script>
 
-<!-- Marked.js for Markdown rendering -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-<?php
-  $user_id = get_loggedin_user_id();
-  $staff_info = $this->db->get_where('staff', ['id' => $user_id])->row();
-  $user_name = $staff_info ? $staff_info->name : 'Unknown';
-  $session_id = session_id();
-?>
 
 <style>
 .modal-block.modal-block-lg {
@@ -1694,13 +1676,6 @@ document.addEventListener('DOMContentLoaded', function() {
             saveBtn.disabled = false;
             saveBtn.innerHTML = '<i class="fas fa-plus-circle"></i> <?=translate('apply')?>';
         }, 5000);
-    });
-    
-    // Additional fix for modal close buttons
-    $(document).off('click', '.modal-dismiss').on('click', '.modal-dismiss', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $.magnificPopup.close();
     });
 });
 </script>

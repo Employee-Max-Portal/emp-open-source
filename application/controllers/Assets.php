@@ -43,6 +43,26 @@ class Assets extends Admin_Controller
         $this->form_validation->set_rules('name', translate('category'), 'trim|required|callback_unique_category');
     }
 
+    // Check if category name is unique
+    public function unique_category($name)
+    {
+        $category_id = $this->input->post('category_id');
+        $branch_id = is_superadmin_loggedin() ? $this->input->post('branch_id') : get_loggedin_branch_id();
+        
+        $this->db->where('name', $name);
+        $this->db->where('branch_id', $branch_id);
+        if (!empty($category_id)) {
+            $this->db->where('id !=', $category_id);
+        }
+        $query = $this->db->get('assets_category');
+        
+        if ($query->num_rows() > 0) {
+            $this->form_validation->set_message('unique_category', 'The category name already exists.');
+            return false;
+        }
+        return true;
+    }
+
     // assets page
     public function lists()
     {

@@ -224,7 +224,7 @@ class Rdc extends Admin_Controller
     // get add modal
     public function getRDCDetails()
     {
-        if (get_permission('rdc_management', 'is_edit')) {
+        if (get_permission('rdc_management', 'is_view')) {
             $this->data['request_id'] = $this->input->post('id');
 
 			$this->data['headerelements']   = array(

@@ -98,8 +98,8 @@ $currency_symbol = isset($global_config['currency_symbol']) ? $global_config['cu
     
     <div class="panel-body">
         <div style="text-align: center; margin-bottom: 20px;" id="report-header">
-            <h2 style="margin-bottom: 0;">SOLUTION HUB TECHNOLOGIES</h2>
-            <div>House #29, Flat #C2, 29, Katasur, (kaderabad housing), Mohammadpur, Dhaka.</div>
+            <h2 style="margin-bottom: 0;">Your Business Name</h2>
+            <div>Mohammadpur, Dhaka.</div>
             <strong>Employee Salary Analysis for <?php echo "$month, $year" ?></strong>
         </div>
 
@@ -404,9 +404,9 @@ function exportToPDF() {
     
     // Add header
     doc.setFontSize(16);
-    doc.text('SOLUTION HUB TECHNOLOGIES', 148, 20, { align: 'center' });
+    doc.text('Your Business Name', 148, 20, { align: 'center' });
     doc.setFontSize(10);
-    doc.text('House #29, Flat #C2, 29, Katasur, (kaderabad housing), Mohammadpur, Dhaka.', 148, 28, { align: 'center' });
+    doc.text('Mohammadpur, Dhaka.', 148, 28, { align: 'center' });
     doc.setFontSize(12);
     doc.text('Employee Salary Analysis for <?php echo "$month, $year" ?>', 148, 36, { align: 'center' });
     
@@ -571,8 +571,8 @@ function exportToExcel() {
     const data = [];
     
     // Add company header
-    data.push(['SOLUTION HUB TECHNOLOGIES', '', '', '', '', '', '', '', '', '', '', '']);
-    data.push(['House #29, Flat #C2, 29, Katasur, (kaderabad housing), Mohammadpur, Dhaka.', '', '', '', '', '', '', '', '', '', '', '']);
+    data.push(['Your Business Name', '', '', '', '', '', '', '', '', '', '', '']);
+    data.push(['Mohammadpur, Dhaka.', '', '', '', '', '', '', '', '', '', '', '']);
     data.push(['Employee Salary Analysis for <?php echo "$month, $year" ?>', '', '', '', '', '', '', '', '', '', '', '']);
     data.push(['', '', '', '', '', '', '', '', '', '', '', '']); // Empty row
     

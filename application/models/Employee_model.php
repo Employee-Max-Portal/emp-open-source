@@ -830,44 +830,6 @@ class Employee_model extends MY_Model
     return $this->db->count_all_results();
 	}
 
-	// get Responsibilities  function
-/*     public function get_responsibilities()
-    {
-        $this->db->select('*');
-        $this->db->from('staff_responsibilities');
-        $this->db->order_by('id', 'DESC');
-        return $this->db->get()->result_array();
-    } */
-	 // get Role Responsibilities function
-	/* public function get_role_responsibilities()
-	{
-		$this->db->select('
-			srr.staff_designation,
-			GROUP_CONCAT(srr.responsibility_id ORDER BY srr.priority ASC) as responsibility_ids,
-			sd.name as designation_name,
-			GROUP_CONCAT(sr.title ORDER BY srr.priority ASC) as responsibility_titles
-		');
-		$this->db->from('staff_roles_responsibilities srr');
-		$this->db->join('staff_designation sd', 'sd.id = srr.staff_designation', 'left');
-		$this->db->join('staff_responsibilities sr', 'sr.id = srr.responsibility_id', 'left');
-		$this->db->group_by('srr.staff_designation');
-		$this->db->order_by('sd.name', 'ASC');
-		return $this->db->get()->result_array();
-	}
-	
-	// Get individual role responsibility details
-	public function get_role_responsibility_details($designation_id, $responsibility_id)
-	{
-		$this->db->select('sr.title, srr.priority, sd.name as designation_name');
-		$this->db->from('staff_responsibilities sr');
-		$this->db->join('staff_roles_responsibilities srr', 'srr.responsibility_id = sr.id');
-		$this->db->join('staff_designation sd', 'sd.id = srr.staff_designation');
-		$this->db->where('sr.id', $responsibility_id);
-		$this->db->where('srr.staff_designation', $designation_id);
-		return $this->db->get()->row_array();
-	} */
-
-
 	// Allocate 2 days sick leave for intern employees
 	public function allocate_intern_sick_leave($employee_id)
 	{

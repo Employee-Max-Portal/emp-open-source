@@ -64,10 +64,7 @@ $total_deduction = array_sum(array_column($deductions, 'amount'));
 // ✅ Final Net Pay
 //$net_remuneration = $earnings - $total_deduction;
 $net_remuneration = $earnings;
-
-/* echo "<pre>";
-print_r ($staff);
-echo "</pre>"; */ 
+ 
 ?>
 
     <style>
@@ -83,7 +80,7 @@ echo "</pre>"; */
 <div class="certificate">
     <h2>Salary Certificate</h2>
     <p>
-        This is to certify that <strong><?php echo $employee_name; ?></strong> has been working in SOLUTION HUB TECHNOLOGIES since 
+        This is to certify that <strong><?php echo $employee_name; ?></strong> has been working in Your Business Name since 
         <strong><?php echo $joining_date; ?></strong>. He is Active employee of this company under <strong><?php echo $employee_id; ?></strong>. 
         As per our service rule / term of employment, there is no fixed timing of retirement. At present he is serving our company as a 
         <strong><?php echo $designation; ?></strong>, department of <?php echo $department; ?>. His gross salary is below for the month 

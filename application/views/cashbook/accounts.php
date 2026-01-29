@@ -37,7 +37,9 @@
 							<tr>
 								<th width="5%"><?php echo translate('sl'); ?></th>
 								<th width="80%"><?php echo translate('name'); ?></th>
+								<?php if (get_permission('cashbook_accounts', 'is_edit') || get_permission('cashbook_accounts', 'is_delete')): ?>
 								<th width="15%"><?php echo translate('action'); ?></th>
+								<?php endif;?>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,15 +51,17 @@
 							<tr>
 								<td><?php echo $count++; ?></td>
 								<td><?php echo $row['name']; ?></td>
+								<?php if (get_permission('cashbook_accounts', 'is_edit') || get_permission('cashbook_accounts', 'is_delete')): ?>
 								<td class="min-w-xs">
 								<?php if (get_permission('cashbook_accounts', 'is_edit')): ?>
 									<a class="btn btn-default btn-circle icon" href="javascript:void(0);" onclick="getAccountDetails('<?=$row['id']?>')">
 										<i class="fas fa-pen-nib"></i>
 									</a>
-								<!--<?php  endif; if (get_permission('cashbook_accounts', 'is_delete')): ?>
+								<?php  endif; if (get_permission('cashbook_accounts', 'is_delete')): ?>
 									<?php echo btn_delete('cashbook/account_delete/' . $row['id']); ?>
-								<?php endif; ?> -->
+								<?php endif; ?>
 								</td>
+								<?php endif; ?>
 							</tr>
 						<?php
 							endforeach;

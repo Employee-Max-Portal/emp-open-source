@@ -8,7 +8,18 @@
 			$isRegular = ($employee && $employee->employee_type === 'regular');
 
 			if (get_permission('fund_requisition_request', 'is_add')): ?>
-
+				<?php /* if ($isRegular): ?>
+					<div class="panel-btn">
+						<a href="javascript:void(0);" id="fundRequisition" class="btn btn-default btn-circle">
+							<i class="fas fa-plus-circle"></i> <?=translate('fund_requisition_request')?>
+						</a>
+					</div>
+				<?php else: ?>
+					<div class="panel-btn">
+						<i class="fa fa-info-circle"></i>
+						<strong>Note:</strong> You don't have this permission. Please contact HR for assistance.
+					</div>
+				<?php endif; */ ?>
 				<div class="panel-btn">
 						<a href="javascript:void(0);" id="fundRequisition" class="btn btn-default btn-circle">
 							<i class="fas fa-plus-circle"></i> <?=translate('fund_requisition_request')?>
@@ -180,7 +191,7 @@
         <div class="panel-body">
 
             <!-- Fund Category -->
-            <div class="form-group">
+            <div class="form-group mt-md">
                 <label class="col-md-3 control-label"><?=translate('category');?> <span class="required">*</span></label>
                 <div class="col-md-9">
                     <?php
@@ -235,7 +246,7 @@
 				</div>
 			</div>
 			<!-- Fund Milestone -->
-            <div class="form-group milestone-task-group">
+            <div class="form-group mt-md milestone-task-group">
                 <label class="col-md-3 control-label"><?=translate('milestone');?> <span class="required">*</span></label>
                 <div class="col-md-9">
                     <?php
@@ -247,7 +258,7 @@
                 </div>
             </div>
 			<!-- Fund Task -->
-			<div class="form-group milestone-task-group">
+			<div class="form-group mt-md milestone-task-group">
 				<label class="col-md-3 control-label"><?=translate('task');?> <span class="required">*</span></label>
 				<div class="col-md-9">
 					<select name="task_id" id="task_id" class="form-control" data-plugin-selectTwo data-width="100%" required>
