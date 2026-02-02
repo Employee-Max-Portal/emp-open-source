@@ -128,13 +128,13 @@ class Tracker extends MY_Controller
 	public function all_departments()
 	{
 		if (!get_permission('tracker_department', 'is_view')) access_denied();
-		$data['all_departments'] = $this->tracker_model->get_all_departments_summary();
+		$this->data['all_departments'] = $this->tracker_model->get_all_departments_summary();
 
-		$data['title'] = translate('all_departments');
-		$data['sub_page'] = 'tracker/departments';
-		$data['main_menu'] = 'tracker';
+		$this->data['title'] = translate('all_departments');
+		$this->data['sub_page'] = 'tracker/departments';
+		$this->data['main_menu'] = 'tracker';
 
-		$this->load->view('layout/index', $data);
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function join_department($id)
@@ -165,8 +165,8 @@ class Tracker extends MY_Controller
 		if (!get_permission('tracker_department', 'is_edit')) access_denied();
 
 		$id = $this->input->post('id');
-		$data['department'] = $this->tracker_model->get_department_by_id($id);
-		$this->load->view('tracker/department_edit', $data);
+		$this->data['department'] = $this->tracker_model->get_department_by_id($id);
+		$this->load->view('tracker/department_edit', $this->data);
 	}
 
 	public function update_department() {
@@ -216,8 +216,8 @@ class Tracker extends MY_Controller
 
 	public function getDepartmentMembers() {
 		$department_id = $this->input->post('department_id');
-		$data['members'] = $this->tracker_model->get_department_members($department_id);
-		$this->load->view('tracker/department_members', $data);
+		$this->data['members'] = $this->tracker_model->get_department_members($department_id);
+		$this->load->view('tracker/department_members', $this->data);
 	}
 
 
@@ -225,13 +225,13 @@ class Tracker extends MY_Controller
 
 		if (!get_permission('tracker_initiatives', 'is_view')) access_denied();
 
-		$data['department'] = $department;
-		$data['initiatives'] = $this->tracker_model->getInitiatives();
-		$data['active_identifier'] = $department_identifier;
-		$data['title'] = translate('initiatives');
-		$data['sub_page'] = 'tracker/initiatives';
-		$data['main_menu'] = 'tracker';
-		$this->load->view('layout/index', $data);
+		$this->data['department'] = $department;
+		$this->data['initiatives'] = $this->tracker_model->getInitiatives();
+		$this->data['active_identifier'] = $department_identifier;
+		$this->data['title'] = translate('initiatives');
+		$this->data['sub_page'] = 'tracker/initiatives';
+		$this->data['main_menu'] = 'tracker';
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function add_initiatives() {
@@ -258,8 +258,8 @@ class Tracker extends MY_Controller
 		if (!get_permission('tracker_initiatives', 'is_edit')) access_denied();
 
 		$id = $this->input->post('id');
-		$data['component'] = $this->tracker_model->get_component_by_id($id);
-		$this->load->view('tracker/initiatives_edit', $data);
+		$this->data['component'] = $this->tracker_model->get_component_by_id($id);
+		$this->load->view('tracker/initiatives_edit', $this->data);
 	}
 
 	public function delete_initiatives($id = '') {
@@ -439,13 +439,13 @@ class Tracker extends MY_Controller
 		$department = $this->tracker_model->get_department_by_identifier($department_identifier);
 		if (!$department) show_404();
 
-		$data['department'] = $department;
-		$data['components'] = $this->tracker_model->get_components_by_department($department->id);
-		$data['active_identifier'] = $department_identifier;
-		$data['title'] = translate('initiatives');
-		$data['sub_page'] = 'tracker/components';
-		$data['main_menu'] = 'tracker';
-		$this->load->view('layout/index', $data);
+		$this->data['department'] = $department;
+		$this->data['components'] = $this->tracker_model->get_components_by_department($department->id);
+		$this->data['active_identifier'] = $department_identifier;
+		$this->data['title'] = translate('initiatives');
+		$this->data['sub_page'] = 'tracker/components';
+		$this->data['main_menu'] = 'tracker';
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function add_component() {
@@ -473,8 +473,8 @@ class Tracker extends MY_Controller
 		if (!get_permission('tracker_initiatives', 'is_edit')) access_denied();
 
 		$id = $this->input->post('id');
-		$data['component'] = $this->tracker_model->get_component_by_id($id);
-		$this->load->view('tracker/component_edit', $data);
+		$this->data['component'] = $this->tracker_model->get_component_by_id($id);
+		$this->load->view('tracker/component_edit', $this->data);
 	}
 
 	public function delete_component($id = '') {
@@ -508,14 +508,14 @@ class Tracker extends MY_Controller
 		$department = $this->tracker_model->get_department_by_identifier($department_identifier);
 		if (!$department) show_404();
 
-		$data['department'] = $department;
-		$data['milestones'] = $this->tracker_model->get_milestones_by_department($department->id);
+		$this->data['department'] = $department;
+		$this->data['milestones'] = $this->tracker_model->get_milestones_by_department($department->id);
 
-		$data['active_identifier'] = $department_identifier;
-		$data['title'] = translate('milestones');
-		$data['sub_page'] = 'tracker/milestones';
-		$data['main_menu'] = 'tracker';
-		$this->load->view('layout/index', $data);
+		$this->data['active_identifier'] = $department_identifier;
+		$this->data['title'] = translate('milestones');
+		$this->data['sub_page'] = 'tracker/milestones';
+		$this->data['main_menu'] = 'tracker';
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function add_milestone() {
@@ -556,8 +556,8 @@ class Tracker extends MY_Controller
 		if (!get_permission('tracker_milestone', 'is_edit')) access_denied();
 
 		$id = $this->input->post('id');
-		$data['milestone'] = $this->tracker_model->get_milestone_by_id($id);
-		$this->load->view('tracker/milestone_edit', $data);
+		$this->data['milestone'] = $this->tracker_model->get_milestone_by_id($id);
+		$this->load->view('tracker/milestone_edit', $this->data);
 	}
 
 	public function get_milestones_data() {
@@ -842,12 +842,12 @@ class Tracker extends MY_Controller
 		$this->db->join('staff s1', 'mcb.staff_id = s1.id');
 		$this->db->join('staff s2', 'mcb.awarded_by = s2.id');
 		$this->db->order_by('mcb.awarded_at', 'DESC');
-		$data['badges'] = $this->db->get()->result();
+		$this->data['badges'] = $this->db->get()->result();
 
-		$data['title'] = 'Champion Badges Report';
-		$data['sub_page'] = 'tracker/champion_badges';
-		$data['main_menu'] = 'champion_badges';
-		$this->load->view('layout/index', $data);
+		$this->data['title'] = 'Champion Badges Report';
+		$this->data['sub_page'] = 'tracker/champion_badges';
+		$this->data['main_menu'] = 'champion_badges';
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function bulk_redeem_badges() {
@@ -892,11 +892,11 @@ class Tracker extends MY_Controller
 	}
 
 	public function task_types() {
-		$data['task_types'] = $this->db->get('task_types')->result();
-		$data['title'] = translate('task_types');
-		$data['sub_page'] = 'tracker/task_types';
-		$data['main_menu'] = 'tracker';
-		$this->load->view('layout/index', $data);
+		$this->data['task_types'] = $this->db->get('task_types')->result();
+		$this->data['title'] = translate('task_types');
+		$this->data['sub_page'] = 'tracker/task_types';
+		$this->data['main_menu'] = 'tracker';
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function add_task_type() {
@@ -913,8 +913,8 @@ class Tracker extends MY_Controller
 	}
 
 	public function get_task_type_edit() {
-		$data['task_type_id'] = $this->input->post('id');
-		$this->load->view('tracker/task_type_edit', $data);
+		$this->data['task_type_id'] = $this->input->post('id');
+		$this->load->view('tracker/task_type_edit', $this->data);
 	}
 
 	public function update_task_type() {
@@ -1086,78 +1086,78 @@ class Tracker extends MY_Controller
 		$this->db->from('tracker_issues');
 		$this->db->where('assigned_to', $UserID);
 		$this->db->order_by('logged_at', 'DESC');
-		$data['all_issues'] = $this->db->get()->result();
+		$this->data['all_issues'] = $this->db->get()->result();
 
 		// Group issues by status
-		$data['grouped_issues'] = array();
-		foreach ($data['all_issues'] as $issue) {
+		$this->data['grouped_issues'] = array();
+		foreach ($this->data['all_issues'] as $issue) {
 			$status_key = trim($issue->task_status);
-			$data['grouped_issues'][$status_key][] = $issue;
+			$this->data['grouped_issues'][$status_key][] = $issue;
 		}
 
 		// Get issue counts by status
-		$data['issue_counts'] = array();
+		$this->data['issue_counts'] = array();
 		$statuses = $this->tracker_model->get_all_statuses();
 		$status_keys = array_keys($statuses);
 
 		foreach ($status_keys as $status_key) {
 			$this->db->where('task_status', $status_key);
-			$data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
+			$this->data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
 		}
 
 		$staff_query = $this->db->get('staff')->result();
-		$data['staff_lookup'] = [];
+		$this->data['staff_lookup'] = [];
 		foreach ($staff_query as $s) {
-			$data['staff_lookup'][$s->id] = $s;
+			$this->data['staff_lookup'][$s->id] = $s;
 		}
 
 		$dept_query = $this->db->get('tracker_departments')->result();
-		$data['dept_lookup'] = [];
+		$this->data['dept_lookup'] = [];
 		foreach ($dept_query as $d) {
-			$data['dept_lookup'][$d->id] = $d;
+			$this->data['dept_lookup'][$d->id] = $d;
 		}
 
 		$mile_query = $this->db->get('tracker_milestones')->result();
-		$data['mile_lookup'] = [];
+		$this->data['mile_lookup'] = [];
 		foreach ($mile_query as $d) {
-			$data['mile_lookup'][$d->id] = $d;
+			$this->data['mile_lookup'][$d->id] = $d;
 		}
 
 		$comp_query = $this->db->get('tracker_components')->result();
-		$data['comp_lookup'] = [];
+		$this->data['comp_lookup'] = [];
 		foreach ($comp_query as $d) {
-			$data['comp_lookup'][$d->id] = $d;
+			$this->data['comp_lookup'][$d->id] = $d;
 		}
 
 		$label_query = $this->db->get('task_labels')->result();
-		$data['label_lookup'] = [];
+		$this->data['label_lookup'] = [];
 		foreach ($label_query as $d) {
-			$data['label_lookup'][$d->id] = $d;
+			$this->data['label_lookup'][$d->id] = $d;
 		}
 
 		$sop_query = $this->db->get('sop')->result();
-		$data['sop_lookup'] = [];
+		$this->data['sop_lookup'] = [];
 		foreach ($sop_query as $d) {
-			$data['sop_lookup'][$d->id] = $d;
+			$this->data['sop_lookup'][$d->id] = $d;
 		}
 
 		$task_type_query = $this->db->get('task_types')->result();
-		$data['task_type_lookup'] = [];
+		$this->data['task_type_lookup'] = [];
 		foreach ($task_type_query as $d) {
-			$data['task_type_lookup'][$d->id] = $d;
+			$this->data['task_type_lookup'][$d->id] = $d;
 		}
 
 		// Add status configuration for the modal
-		$data['status_config'] = $this->tracker_model->get_all_statuses();
-		$data['priority_config'] = $this->tracker_model->get_all_priority_details();
+		$this->data['status_config'] = $this->tracker_model->get_all_statuses();
+		$this->data['priority_config'] = $this->tracker_model->get_all_priority_details();
 
-		$data['active_identifier'] = $identifier;
-		$data['title'] = translate('Issue Tracker');
-		$data['sub_page'] = 'tracker/my_issues';
-		$data['main_menu'] = 'tracker';
+		$this->data['active_identifier'] = $identifier;
+		$this->data['title'] = translate('Issue Tracker');
+		$this->data['sub_page'] = 'tracker/my_issues';
+		$this->data['main_menu'] = 'tracker';
 
 		// Load additional JS for the modal
-		$data['headerelements'] = [
+		$this->data['headerelements'] = [
 			'js' => [
 				'vendor/moment/moment.min.js',
 				'vendor/daterangepicker/daterangepicker.js',
@@ -1170,7 +1170,7 @@ class Tracker extends MY_Controller
 			]
 		];
 
-		$this->load->view('layout/index', $data);
+		$this->load->view('layout/index', $this->data);
 	}
 
 	// AJAX endpoint to get issues data
@@ -1295,16 +1295,16 @@ class Tracker extends MY_Controller
 		}
 
 		// Add status configuration for the modal
-		$data['status_config'] = $this->tracker_model->get_all_statuses();
-		$data['priority_config'] = $this->tracker_model->get_all_priority_details();
+		$this->data['status_config'] = $this->tracker_model->get_all_statuses();
+		$this->data['priority_config'] = $this->tracker_model->get_all_priority_details();
 
-		$data['active_identifier'] = $identifier;
-		$data['title'] = translate('Issue Tracker');
-		$data['sub_page'] = 'tracker/my_coordination';
-		$data['main_menu'] = 'tracker';
+		$this->data['active_identifier'] = $identifier;
+		$this->data['title'] = translate('Issue Tracker');
+		$this->data['sub_page'] = 'tracker/my_coordination';
+		$this->data['main_menu'] = 'tracker';
 
 		// Load additional JS for the modal
-		$data['headerelements'] = [
+		$this->data['headerelements'] = [
 			'js' => [
 				'vendor/moment/moment.min.js',
 				'vendor/daterangepicker/daterangepicker.js',
@@ -1317,7 +1317,7 @@ class Tracker extends MY_Controller
 			]
 		];
 
-		$this->load->view('layout/index', $data);
+		$this->load->view('layout/index', $this->data);
 	}
 
 	// AJAX endpoint to get issues data
@@ -1687,23 +1687,23 @@ class Tracker extends MY_Controller
 		$this->db->select('*');
 		$this->db->from('tracker_issues');
 		$this->db->order_by('logged_at', 'DESC');
-		$data['all_issues'] = $this->db->get()->result();
+		$this->data['all_issues'] = $this->db->get()->result();
 
 		// Group issues by status
-		$data['grouped_issues'] = array();
-		foreach ($data['all_issues'] as $issue) {
+		$this->data['grouped_issues'] = array();
+		foreach ($this->data['all_issues'] as $issue) {
 			$status_key = trim($issue->task_status);
-			$data['grouped_issues'][$status_key][] = $issue;
+			$this->data['grouped_issues'][$status_key][] = $issue;
 		}
 
 		// Get issue counts by status
-		$data['issue_counts'] = array();
+		$this->data['issue_counts'] = array();
 		$statuses = $this->tracker_model->get_all_statuses();
 		$status_keys = array_keys($statuses);
 
 		foreach ($status_keys as $status_key) {
 			$this->db->where('task_status', $status_key);
-			$data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
+			$this->data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
 		}
 
 		$staff_query = $this->db->get('staff')->result();
@@ -1711,58 +1711,58 @@ class Tracker extends MY_Controller
 		// ❌ Remove Superadmin (ID 1)
 		unset($staff_query[0]);
 
-		$data['staff_lookup'] = [];
+		$this->data['staff_lookup'] = [];
 		foreach ($staff_query as $s) {
-			$data['staff_lookup'][$s->id] = $s;
+			$this->data['staff_lookup'][$s->id] = $s;
 		}
 
 		$dept_query = $this->db->get('tracker_departments')->result();
-		$data['dept_lookup'] = [];
+		$this->data['dept_lookup'] = [];
 		foreach ($dept_query as $d) {
-			$data['dept_lookup'][$d->id] = $d;
+			$this->data['dept_lookup'][$d->id] = $d;
 		}
 
 		$mile_query = $this->db->get('tracker_milestones')->result();
-		$data['mile_lookup'] = [];
+		$this->data['mile_lookup'] = [];
 		foreach ($mile_query as $d) {
-			$data['mile_lookup'][$d->id] = $d;
+			$this->data['mile_lookup'][$d->id] = $d;
 		}
 
 		$comp_query = $this->db->get('tracker_components')->result();
-		$data['comp_lookup'] = [];
+		$this->data['comp_lookup'] = [];
 		foreach ($comp_query as $d) {
-			$data['comp_lookup'][$d->id] = $d;
+			$this->data['comp_lookup'][$d->id] = $d;
 		}
 
 		$label_query = $this->db->get('task_labels')->result();
-		$data['label_lookup'] = [];
+		$this->data['label_lookup'] = [];
 		foreach ($label_query as $d) {
-			$data['label_lookup'][$d->id] = $d;
+			$this->data['label_lookup'][$d->id] = $d;
 		}
 
 		$sop_query = $this->db->get('sop')->result();
-		$data['sop_lookup'] = [];
+		$this->data['sop_lookup'] = [];
 		foreach ($sop_query as $d) {
-			$data['sop_lookup'][$d->id] = $d;
+			$this->data['sop_lookup'][$d->id] = $d;
 		}
 
 		$task_type_query = $this->db->get('task_types')->result();
-		$data['task_type_lookup'] = [];
+		$this->data['task_type_lookup'] = [];
 		foreach ($task_type_query as $d) {
-			$data['task_type_lookup'][$d->id] = $d;
+			$this->data['task_type_lookup'][$d->id] = $d;
 		}
 
 		// Add status configuration for the modal
-		$data['status_config'] = $this->tracker_model->get_all_statuses();
-		$data['priority_config'] = $this->tracker_model->get_all_priority_details();
+		$this->data['status_config'] = $this->tracker_model->get_all_statuses();
+		$this->data['priority_config'] = $this->tracker_model->get_all_priority_details();
 
-		$data['active_identifier'] = $identifier;
-		$data['title'] = translate('Issue Tracker');
-		$data['sub_page'] = 'tracker/all_issues';
-		$data['main_menu'] = 'tracker';
+		$this->data['active_identifier'] = $identifier;
+		$this->data['title'] = translate('Issue Tracker');
+		$this->data['sub_page'] = 'tracker/all_issues';
+		$this->data['main_menu'] = 'tracker';
 
 		// Load additional JS for the modal
-		$data['headerelements'] = [
+		$this->data['headerelements'] = [
 			'js' => [
 				'vendor/moment/moment.min.js',
 				'vendor/daterangepicker/daterangepicker.js',
@@ -1775,37 +1775,37 @@ class Tracker extends MY_Controller
 			]
 		];
 
-		$this->load->view('layout/index', $data);
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function issue_tracker($identifier = '') {
 		if (!get_permission('tracker_issues', 'is_view')) {
 			access_denied();
 		}
-		$data['department'] = $this->db->where('identifier', $identifier)->get('tracker_departments')->row();
+		$this->data['department'] = $this->db->where('identifier', $identifier)->get('tracker_departments')->row();
 
 		// Get all issues
 		$this->db->select('*');
 		$this->db->from('tracker_issues');
 		$this->db->where('department', $identifier);
 		$this->db->order_by('logged_at', 'DESC');
-		$data['all_issues'] = $this->db->get()->result();
+		$this->data['all_issues'] = $this->db->get()->result();
 
 		// Group issues by status
-		$data['grouped_issues'] = array();
-		foreach ($data['all_issues'] as $issue) {
+		$this->data['grouped_issues'] = array();
+		foreach ($this->data['all_issues'] as $issue) {
 			$status_key = trim($issue->task_status);
-			$data['grouped_issues'][$status_key][] = $issue;
+			$this->data['grouped_issues'][$status_key][] = $issue;
 		}
 
 		// Get issue counts by status
-		$data['issue_counts'] = array();
+		$this->data['issue_counts'] = array();
 		$statuses = $this->tracker_model->get_all_statuses();
 		$status_keys = array_keys($statuses);
 
 		foreach ($status_keys as $status_key) {
 			$this->db->where('task_status', $status_key);
-			$data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
+			$this->data['issue_counts'][$status_key] = $this->db->count_all_results('tracker_issues');
 		}
 
 		$staff_query = $this->db->get('staff')->result();
@@ -1813,57 +1813,57 @@ class Tracker extends MY_Controller
 		// ❌ Remove Superadmin (ID 1)
 		unset($staff_query[0]);
 
-		$data['staff_lookup'] = [];
+		$this->data['staff_lookup'] = [];
 		foreach ($staff_query as $s) {
-			$data['staff_lookup'][$s->id] = $s;
+			$this->data['staff_lookup'][$s->id] = $s;
 		}
 
 		$dept_query = $this->db->get('tracker_departments')->result();
-		$data['dept_lookup'] = [];
+		$this->data['dept_lookup'] = [];
 		foreach ($dept_query as $d) {
-			$data['dept_lookup'][$d->id] = $d;
+			$this->data['dept_lookup'][$d->id] = $d;
 		}
 
 		$mile_query = $this->db->get('tracker_milestones')->result();
-		$data['mile_lookup'] = [];
+		$this->data['mile_lookup'] = [];
 		foreach ($mile_query as $d) {
-			$data['mile_lookup'][$d->id] = $d;
+			$this->data['mile_lookup'][$d->id] = $d;
 		}
 
 		$comp_query = $this->db->get('tracker_components')->result();
-		$data['comp_lookup'] = [];
+		$this->data['comp_lookup'] = [];
 		foreach ($comp_query as $d) {
-			$data['comp_lookup'][$d->id] = $d;
+			$this->data['comp_lookup'][$d->id] = $d;
 		}
 
 		$label_query = $this->db->get('task_labels')->result();
-		$data['label_lookup'] = [];
+		$this->data['label_lookup'] = [];
 		foreach ($label_query as $d) {
-			$data['label_lookup'][$d->id] = $d;
+			$this->data['label_lookup'][$d->id] = $d;
 		}
 
 		$sop_query = $this->db->get('sop')->result();
-		$data['sop_lookup'] = [];
+		$this->data['sop_lookup'] = [];
 		foreach ($sop_query as $d) {
-			$data['sop_lookup'][$d->id] = $d;
+			$this->data['sop_lookup'][$d->id] = $d;
 		}
 
 		$task_type_query = $this->db->get('task_types')->result();
-		$data['task_type_lookup'] = [];
+		$this->data['task_type_lookup'] = [];
 		foreach ($task_type_query as $d) {
-			$data['task_type_lookup'][$d->id] = $d;
+			$this->data['task_type_lookup'][$d->id] = $d;
 		}
 		// Add status configuration for the modal
-		$data['status_config'] = $this->tracker_model->get_all_statuses();
-		$data['priority_config'] = $this->tracker_model->get_all_priority_details();
+		$this->data['status_config'] = $this->tracker_model->get_all_statuses();
+		$this->data['priority_config'] = $this->tracker_model->get_all_priority_details();
 
-		$data['active_identifier'] = $identifier;
-		$data['title'] = translate('Issue Tracker');
-		$data['sub_page'] = 'tracker/issues';
-		$data['main_menu'] = 'tracker';
+		$this->data['active_identifier'] = $identifier;
+		$this->data['title'] = translate('Issue Tracker');
+		$this->data['sub_page'] = 'tracker/issues';
+		$this->data['main_menu'] = 'tracker';
 
 		// Load additional JS for the modal
-		$data['headerelements'] = [
+		$this->data['headerelements'] = [
 			'js' => [
 				'vendor/moment/moment.min.js',
 				'vendor/daterangepicker/daterangepicker.js',
@@ -1878,7 +1878,7 @@ class Tracker extends MY_Controller
 			]
 		];
 
-		$this->load->view('layout/index', $data);
+		$this->load->view('layout/index', $this->data);
 	}
 
 	public function get_sub_tasks($parentTaskId) {
@@ -2873,11 +2873,11 @@ public function pending_approval() {
     }
 
     // Get status configuration for the modal
-    $data['status_config'] = $this->tracker_model->get_all_statuses();
-    $data['priority_config'] = $this->tracker_model->get_all_priority_details();
+    $this->data['status_config'] = $this->tracker_model->get_all_statuses();
+    $this->data['priority_config'] = $this->tracker_model->get_all_priority_details();
 
     // Add statuses and priorities arrays for the view
-    $data['statuses'] = [
+    $this->data['statuses'] = [
         'todo' => translate('to-do'),
         'in_progress' => translate('in_progress'),
         'in_review' => translate('in_review'),
@@ -2892,7 +2892,7 @@ public function pending_approval() {
         'canceled' => translate('canceled')
     ];
 
-    $data['priorities'] = [
+    $this->data['priorities'] = [
         'Low' => translate('Low'),
         'Medium' => translate('Medium'),
         'High' => translate('High'),
@@ -2906,33 +2906,33 @@ public function pending_approval() {
     $this->db->where('lc.active', 1);
     $this->db->where_not_in('lc.role', [1, 9, 10, 11, 12]);
     $this->db->order_by('s.name', 'ASC');
-    $data['staff_list'] = $this->db->get()->result();
+    $this->data['staff_list'] = $this->db->get()->result();
 
     // Get components, milestones, and task types
-    $data['components'] = $this->db->get('tracker_components')->result();
-    $data['milestones'] = $this->db->get('tracker_milestones')->result();
-    $data['task_types'] = $this->db->get('task_types')->result();
+    $this->data['components'] = $this->db->get('tracker_components')->result();
+    $this->data['milestones'] = $this->db->get('tracker_milestones')->result();
+    $this->data['task_types'] = $this->db->get('task_types')->result();
 
     // Get staff lookup for modal
     $staff_query = $this->db->get('staff')->result();
-    $data['staff_lookup'] = [];
+    $this->data['staff_lookup'] = [];
     foreach ($staff_query as $s) {
-        $data['staff_lookup'][$s->id] = $s;
+        $this->data['staff_lookup'][$s->id] = $s;
     }
 
     // Get label lookup
     $label_query = $this->db->get('task_labels')->result();
-    $data['label_lookup'] = [];
+    $this->data['label_lookup'] = [];
     foreach ($label_query as $d) {
-        $data['label_lookup'][$d->id] = $d;
+        $this->data['label_lookup'][$d->id] = $d;
     }
 
-    $data['title'] = translate('Pending Approval');
-    $data['sub_page'] = 'tracker/pending_approval';
-    $data['main_menu'] = 'tracker';
+    $this->data['title'] = translate('Pending Approval');
+    $this->data['sub_page'] = 'tracker/pending_approval';
+    $this->data['main_menu'] = 'tracker';
 
     // Load additional JS for the modal
-    $data['headerelements'] = [
+    $this->data['headerelements'] = [
         'js' => [
             'vendor/moment/moment.min.js',
             'vendor/daterangepicker/daterangepicker.js',
@@ -2945,7 +2945,7 @@ public function pending_approval() {
         ]
     ];
 
-    $this->load->view('layout/index', $data);
+    $this->load->view('layout/index', $this->data);
 }
 
 public function get_pending_tasks() {
