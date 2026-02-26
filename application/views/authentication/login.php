@@ -194,17 +194,7 @@
             margin-bottom: 12px;
             font-weight: 500;
         }
-        .demo-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-        .demo-text {
-            color: #64748b;
-            font-size: 12px;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
+       
         .button-group {
             display: flex;
             gap: 8px;
@@ -239,15 +229,7 @@
         .modern-btn:hover::before {
             left: 100%;
         }
-        .btn-demo {
-            background: linear-gradient(135deg, #50a7e3 0%, #3b8bc9 100%);
-            color: white;
-            box-shadow: 0 2px 8px rgba(80, 167, 227, 0.3);
-        }
-        .btn-demo:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(80, 167, 227, 0.4);
-        }
+       
         .btn-admin {
             background: white;
             color: #50a7e3;
@@ -278,31 +260,62 @@
             .left-panel { display: none; }
             .right-panel { padding: 40px 30px; }
             .button-group { flex-direction: column; }
+            .mobile-logo {
+                display: flex !important;
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+            .mobile-logo img {
+                max-width: 200px;
+                height: auto;
+            }
         }
+        
+        .mobile-logo {
+            display: none;
+        }
+ 		
+		.logo-wrapper {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 16px;
+			text-align: center;
+		}
+
+		.logo-wrapper img {
+			max-width: 80%;
+			height: auto;
+		}
+
     </style>
 </head>
 <body>
     <div class="login-container">
         <div class="left-panel">
-            <h1>Employee Max Portal</h1>
-            <p>Self-hosted workforce management system.</p>
+			<div class="logo-wrapper">
+				<img src="<?php echo base_url('uploads/app_image/white-orange.png'); ?>" alt="EMP Logo">
+			</div>
+            <p>A discipline system for teams who want work to move without chasing.</p>
             <div class="features">
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="feature-text">Secure authentication</div>
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="feature-text">Every task has an owner</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
-                    <div class="feature-text">Role-based access control</div>
+                    <div class="feature-icon"><i class="fas fa-user-clock"></i></div>
+                    <div class="feature-text">Every owner has a deadline</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="feature-text">Built for reliability and transparency</div>
+                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                    <div class="feature-text">Everything is visible. Nothing is assumed</div>
                 </div>
             </div>
-
         </div>
+		
         <div class="right-panel">
+            <div class="mobile-logo">
+                <img src="<?php echo base_url('uploads/app_image/blue-orange.png'); ?>" alt="EMP Logo">
+            </div>
             <h2>Sign In</h2>
             <p class="subtitle">Enter your credentials to access your account</p>
             <?php echo form_open($this->uri->uri_string()); ?>
@@ -354,30 +367,6 @@
                 icon.classList.add('fa-eye');
             }
         });
-
-        function fillEmployee() {
-            document.getElementById('username').value = 'user@demo-emp.com.bd';
-            document.getElementById('password').value = '123456';
-            
-            // Toggle button styles
-            const employeeBtn = document.getElementById('employeeBtn');
-            const adminBtn = document.getElementById('adminBtn');
-            
-            employeeBtn.className = 'modern-btn btn-demo';
-            adminBtn.className = 'modern-btn btn-admin';
-        }
-
-        function fillAdmin() {
-            document.getElementById('username').value = 'admin@demo-emp.com.bd';
-            document.getElementById('password').value = '123456';
-            
-            // Toggle button styles
-            const employeeBtn = document.getElementById('employeeBtn');
-            const adminBtn = document.getElementById('adminBtn');
-            
-            employeeBtn.className = 'modern-btn btn-admin';
-            adminBtn.className = 'modern-btn btn-demo';
-        }
     </script>
     <?php
     $alertclass = "";

@@ -52,6 +52,25 @@
 							<textarea type="text" rows="3" class="form-control" name="address" ><?=set_value('address', $data->address)?></textarea>
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label"><?=translate('weekends')?> <span class="required">*</span></label>
+						<div class="col-md-6">
+							<?php
+								$weekends = array(
+									'0' => translate('sunday'),
+									'1' => translate('monday'),
+									'2' => translate('tuesday'),
+									'3' => translate('wednesday'),
+									'4' => translate('thursday'),
+									'5' => translate('friday'),
+									'6' => translate('saturday'),
+								);
+								$selected_weekends = !empty($data->weekends) ? explode(',', $data->weekends) : array();
+								echo form_dropdown("weekends[]", $weekends, set_value('weekends', $selected_weekends), "class='form-control' multiple data-plugin-selectTwo data-width='100%'");
+							?>
+							<span class="error"><?=form_error('weekends[]') ?></span>
+						</div>
+					</div>
 					
 					<footer class="panel-footer mt-lg">
 						<div class="row">

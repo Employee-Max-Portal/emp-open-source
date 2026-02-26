@@ -731,6 +731,18 @@ class Dashboard extends Dashboard_Controller
 	}
 
 	public function get_user_notifications() {
+		// Prevent direct URL access
+		if (!$this->input->is_ajax_request()) {
+			redirect('dashboard');
+			return;
+		}
+		
+		// Ensure user is logged in
+		if (!is_loggedin()) {
+			echo json_encode(['error' => 'Not authenticated']);
+			return;
+		}
+		
 		$user_id = get_loggedin_user_id();
 		$role_id = loggedin_role_id();
 		$limit = 10;

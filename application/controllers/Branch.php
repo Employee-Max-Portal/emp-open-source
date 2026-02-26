@@ -20,6 +20,7 @@ class Branch extends Admin_Controller
 				//$this->form_validation->set_rules('business_name', translate('business_name'), 'required');
 				$this->form_validation->set_rules('email', translate('email'), 'required|valid_email');
 				$this->form_validation->set_rules('mobileno', translate('mobile_no'), 'required');
+				$this->form_validation->set_rules('weekends[]', translate('weekends'), 'required');
 
 				if ($this->form_validation->run() == true) {
 					$post = $this->input->post();
@@ -58,6 +59,7 @@ class Branch extends Admin_Controller
 				//$this->form_validation->set_rules('business_name', translate('business_name'), 'required');
 				$this->form_validation->set_rules('email', translate('email'), 'required|valid_email');
 				$this->form_validation->set_rules('mobileno', translate('mobile_no'), 'required');
+				$this->form_validation->set_rules('weekends[]', translate('weekends'), 'required');
                 if ($this->form_validation->run() == true) {
                     $post = $this->input->post();
                     $response = $this->branch_model->save($post, $id);
@@ -125,3 +127,4 @@ class Branch extends Admin_Controller
         }
     }
 }
+

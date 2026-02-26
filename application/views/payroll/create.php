@@ -425,18 +425,6 @@ echo "</pre>";  */?>
         							<?php endforeach; ?>
         						</select>
         					</div>
-                        <?php
-                        $links = $this->payroll_model->get('transactions_links', array('branch_id' => $staff['branch_id']), true);
-                        if ($links['status'] == 1) {
-                        ?>
-                            <div class="form-group">
-                                <label class="control-label"><?php echo translate('account'); ?> <span class="required">*</span></label>
-                                <?php
-                                    $accounts_list = $this->app_lib->getSelectByBranch('accounts', $staff['branch_id']);
-                                    echo form_dropdown("account_id", $accounts_list, $links['expense'], "class='form-control' id='account_id' required data-plugin-selectTwo data-width='100%'");
-                                ?>
-                            </div>
-                        <?php } ?>
         					<div class="mb-lg">
         						<label class="control-label"><?=translate('remarks')?></label>
                                 <textarea class="form-control" name="remarks" rows="2" maxlength="50"><?=set_value('remarks')?></textarea>

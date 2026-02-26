@@ -56,7 +56,9 @@ Most organizations struggle with fragmented systems for HR, Payroll, and Tasks. 
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/Employee-Max-Portal/emp-open-source.git
+    git clone [https://github.com/Employee-Max-Portal/emp-open-source.git](https://github.com/Employee-Max-Portal/emp-open-source.git)
+    sudo chown -R www-data:www-data emp-open-source
+    sudo chmod -R +x . emp-open-source
     cd emp-open-source
     ```
 

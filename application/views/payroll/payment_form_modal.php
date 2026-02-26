@@ -1,5 +1,6 @@
 <?php 
 $currency_symbol = $global_config['currency_symbol'];
+$advance_salary = 0;
 
 // Use adjusted salary values if available
 if (isset($adjustment)) {
@@ -74,7 +75,7 @@ if (isset($adjustment)) {
                     <th><?= translate('total_deduction') ?>:</th>
                     <td><?= currencyFormat($total_deduction) ?></td>
                 </tr>
-                <?php if ($advance_salary > 0): ?>
+		<?php if (!empty($advance_salary) && $advance_salary > 0): ?>	       
                 <tr>
                     <th><?= translate('advance_salary') ?>:</th>
                     <td><?= currencyFormat($advance_salary) ?></td>

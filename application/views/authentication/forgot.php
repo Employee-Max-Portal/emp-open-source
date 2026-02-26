@@ -183,35 +183,64 @@
             .login-container { flex-direction: column; }
             .left-panel { display: none; }
             .right-panel { padding: 40px 30px; }
+            .button-group { flex-direction: column; }
+            .mobile-logo {
+                display: flex !important;
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+            .mobile-logo img {
+                max-width: 200px;
+                height: auto;
+            }
         }
+        
+        .mobile-logo {
+            display: none;
+        }
+		
+		.logo-wrapper {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 16px;
+			text-align: center;
+		}
+
+		.logo-wrapper img {
+			max-width: 80%;
+			height: auto;
+		}
+
     </style>
 </head>
 <body>
     <div class="login-container">
         <div class="left-panel">
+			<div class="logo-wrapper">
+				<img src="<?php echo base_url('uploads/app_image/white-orange.png'); ?>" alt="EMP Logo">
+			</div>
             <h1>Password Recovery</h1>
-            <p>Recover your account access in just a few simple steps. We'll send you a secure reset link.</p>
+            <p>Enter your email or username. A secure reset link will be sent if the account exists.</p>
             <div class="features">
                 <div class="feature-item">
                     <div class="feature-icon"><i class="fas fa-key"></i></div>
-                    <div class="feature-text">Instant Reset Link</div>
+                    <div class="feature-text">Secure verification</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon"><i class="fas fa-envelope-open-text"></i></div>
-                    <div class="feature-text">Email Notification</div>
+                    <div class="feature-text">Email-based reset</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
-                    <div class="feature-text">Account Verification</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-history"></i></div>
-                    <div class="feature-text">24/7 Support Available</div>
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <div class="feature-text">System-controlled access</div>
                 </div>
             </div>
 
         </div>
         <div class="right-panel">
+			<div class="mobile-logo">
+                <img src="<?php echo base_url('uploads/app_image/blue-orange.png'); ?>" alt="EMP Logo">
+            </div>
             <h2>Forgot Password?</h2>
             <p class="subtitle">Enter your email or username to receive reset instructions</p>
             
@@ -231,7 +260,7 @@
 
             <?php echo form_open($this->uri->uri_string()); ?>
                 <div class="form-group">
-                    <label for="username">Email / Username</label>
+                    <label for="username">Enter your registered email or username</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user input-icon"></i>
                         <input type="text" class="form-control" name="username" id="username" 

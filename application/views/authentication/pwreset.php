@@ -170,37 +170,58 @@
             .login-container { flex-direction: column; }
             .left-panel { display: none; }
             .right-panel { padding: 40px 30px; }
+            .button-group { flex-direction: column; }
+            .mobile-logo {
+                display: flex !important;
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+            .mobile-logo img {
+                max-width: 200px;
+                height: auto;
+            }
         }
+        
+        .mobile-logo {
+            display: none;
+        }
+  		
+		.logo-wrapper {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 16px;
+			text-align: center;
+		}
+
+		.logo-wrapper img {
+			max-width: 80%;
+			height: auto;
+		}
+
     </style>
 </head>
 <body>
     <div class="login-container">
         <div class="left-panel">
-            <h1>Create New Password</h1>
-            <p>Set up a strong and secure password to protect your account from unauthorized access.</p>
+			<div class="logo-wrapper">
+				<img src="<?php echo base_url('uploads/app_image/white-orange.png'); ?>" alt="EMP Logo">
+			</div>
+            <h1>Set a new password</h1>
+            <p>Choose a new password to continue accessing your account.</p>
             <div class="features">
                 <div class="feature-item">
                     <div class="feature-icon"><i class="fas fa-fingerprint"></i></div>
-                    <div class="feature-text">Strong Encryption</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
-                    <div class="feature-text">Advanced Security</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="feature-text">Instant Update</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-user-lock"></i></div>
-                    <div class="feature-text">Privacy Protected</div>
+                    <div class="feature-text">Access is protected by system rules.</div>
                 </div>
             </div>
 
         </div>
         <div class="right-panel">
-            <h2>Reset Password</h2>
-            <p class="subtitle">Enter your new password below to reset your account</p>
+			<div class="mobile-logo">
+                <img src="<?php echo base_url('uploads/app_image/blue-orange.png'); ?>" alt="EMP Logo">
+            </div>
+            <h2>Create a new password</h2>
+            <p class="subtitle">Enter and confirm your new password to continue.</p>
 
             <?php echo form_open($this->uri->uri_string()); ?>
                 <input type="hidden" name="key" value="<?php echo $key; ?>">
@@ -237,7 +258,7 @@
 
                 <button type="submit" class="btn-login">
                     <i class="fas fa-check"></i>
-                    Reset Password
+                    Save password
                 </button>
             <?php echo form_close(); ?>
         </div>

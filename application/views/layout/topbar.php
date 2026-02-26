@@ -224,10 +224,33 @@ html.sidebar-light:not(.dark) .header .logo-env {
 
 </style>
 
+<style>
+/* Responsive logo styles */
+@media (max-width: 768px) {
+    .logo-env {
+        display: flex !important;
+        align-items: center !important;
+    }
+    .logo img {
+        height: 35px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-env {
+        display: flex !important;
+        align-items: center !important;
+    }
+    .logo img {
+        height: 30px !important;
+    }
+}
+</style>
+<?php $system_logo = $this->app_lib->get_image_url('settings/' . $global_config['system_logo']); ?>
 <header class="header">
 	<div class="logo-env">
 		<a href="<?php echo base_url('dashboard');?>" class="logo">
-			<img src="<?php echo base_url();?>uploads/app_image/emp-logo.png" height="50">
+			<img src="<?php echo html_escape($system_logo); ?>" height="50" alt="Image" class="img-fluid">
 		</a>
 
 		<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">

@@ -98,15 +98,24 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-3 col-md-3">
-							<label class="control-label pt-none"><?=translate('system_logo');?></label>
-							<input type="file" name="logo_file" class="dropify" data-allowed-file-extensions="png" data-default-file="<?=$this->application_model->getBranchImage('', 'logo')?>" />
-						</div>
-						<div class="col-md-3 mb-md">
-							<label class="control-label pt-none"><?=translate('text_logo');?></label>
-							<input type="file" name="text_logo" class="dropify" data-allowed-file-extensions="png" data-default-file="<?=$this->application_model->getBranchImage('', 'logo-small')?>" />
+						<label class="col-md-3 control-label"><?=translate('weekends')?> <span class="required">*</span></label>
+						<div class="col-md-6">
+							<?php
+								$weekends = array(
+									'0' => translate('sunday'),
+									'1' => translate('monday'),
+									'2' => translate('tuesday'),
+									'3' => translate('wednesday'),
+									'4' => translate('thursday'),
+									'5' => translate('friday'),
+									'6' => translate('saturday'),
+								);
+								echo form_dropdown("weekends[]", $weekends, set_value('weekends'), "class='form-control' multiple data-plugin-selectTwo data-width='100%'");
+							?>
+							<span class="error"><?=form_error('weekends[]') ?></span>
 						</div>
 					</div>
+
 					<footer class="panel-footer mt-lg">
 						<div class="row">
 							<div class="col-md-2 col-md-offset-3">

@@ -54,13 +54,24 @@ class MY_Model extends CI_Model {
             $method = 'result_array';
             $this->db->order_by('id', 'ASC');
         }
-        $result = $this->db->get($table)->$method();
+        
+        $query = $this->db->get($table);
+        
+        // Check if query failed
+        if ($query === false) {
+            log_message('error', 'Database query failed for table: ' . $table);
+            return $single ? array() : array();
+        }
+        
+        $result = $query->$method();
 
 		if (empty($result) && $single == true) {
 		    $config = array();
-		    $r = $this->db->list_fields($table);
-		    foreach ($r as $key => $value) {
-		        $config[$value] = "";
+		    if ($this->db->table_exists($table)) {
+		        $r = $this->db->list_fields($table);
+		        foreach ($r as $key => $value) {
+		            $config[$value] = "";
+		        }
 		    }
 		    return $config;
 		}
@@ -108,3 +119,4 @@ class MY_Model extends CI_Model {
         }
     } 
 }
+

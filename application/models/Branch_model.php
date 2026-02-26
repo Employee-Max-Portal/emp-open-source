@@ -14,6 +14,8 @@ class Branch_model extends MY_Model
     public function save($data, $id = null)
 
     {
+        $weekends = isset($data['weekends']) ? implode(',', $data['weekends']) : '';
+        
         $arrayBranch = array(
 			'name' => $data['branch_name'],
             'email' => $data['email'],
@@ -21,6 +23,7 @@ class Branch_model extends MY_Model
             'city' => $data['city'],
             'state' => $data['state'],
             'address' => $data['address'],
+            'weekends' => $weekends,
         );
        if ($id == null) {
 			$this->db->insert('branch', $arrayBranch);
@@ -52,3 +55,4 @@ class Branch_model extends MY_Model
         }
     }
 }
+ 
