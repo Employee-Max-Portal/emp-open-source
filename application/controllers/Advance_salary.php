@@ -594,7 +594,7 @@ class Advance_salary extends Admin_Controller
 
 
 					// Send the email
-					$this->email_model->send_email_yandex($email_data);
+					$this->email_model->send_email($email_data);
 				}
 
                 $url = base_url('advance_salary/request');
