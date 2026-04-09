@@ -1099,7 +1099,7 @@ class Rdc extends Admin_Controller
 					'cc'            => $cc_email_string // ✅ Manager in CC
 				];
 
-				$this->email_model->send_email_yandex($email_data);
+				$this->email_model->send_email($email_data);
 			}
 
 		} else {
