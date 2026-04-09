@@ -166,7 +166,7 @@ class Api extends My_Controller {
 								'cc' => $cc_email
 							];
 
-							$this->email_model->send_email_yandex($email_data);
+							$this->email_model->send_email($email_data);
 						}
 
 						// Send FCM notification
@@ -226,7 +226,7 @@ class Api extends My_Controller {
 									'body' => $body
 								];
 
-								$this->email_model->send_email_yandex($email_data);
+								$this->email_model->send_email($email_data);
 
 								$tg_message = "⚠️ *RDC Task Escalation Alert*\n\n" .
 									"📌 *Task:* {$rdc->title}\n" .
@@ -782,7 +782,7 @@ class Api extends My_Controller {
 			'cc' => $manager ? $manager['email'] : null
 		];
 
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 	}
 
 	private function create_tracker_entries($rdc, $assigned_user, $due_time, $total_expected_time)
@@ -969,7 +969,7 @@ class Api extends My_Controller {
 			'cc'            => implode(',', $cc_emails)
 			];
 
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 		}
 	}
 
@@ -1273,7 +1273,7 @@ public function send_warning_emails() {
 	]);
 
 
-     $this->email_model->send_email_yandex($email_data);
+     $this->email_model->send_email($email_data);
 
 
     }
@@ -1428,7 +1428,7 @@ public function send_separation_emails() {
             ];
 
             // Send the email
-            $this->email_model->send_email_yandex($email_data);
+            $this->email_model->send_email($email_data);
 
             // Mark the email as sent
             $this->db->where('id', $row['id'])->update('separation_requests', [
@@ -1508,7 +1508,7 @@ public function send_event_emails() {
 			];
 
             // Send the email
-            $this->email_model->send_email_yandex($email_data);
+            $this->email_model->send_email($email_data);
 
             // Mark the email as sent
             $this->db->where('id', $row['id'])->update('event', [
@@ -1643,7 +1643,7 @@ public function send_rps_emails()
         ];
 
         // Send email once for all users
-        $this->email_model->send_email_yandex($email_data);
+        $this->email_model->send_email($email_data);
 
         // Mark email as sent
         $this->db->where('id', $policy['id'])->update('policy', [
@@ -1751,7 +1751,7 @@ public function send_warning_reminder_emails() {
             'email_sent_at'  => date('Y-m-d H:i:s')
         ]);
 
-        $this->email_model->send_email_yandex($email_data);
+        $this->email_model->send_email($email_data);
     }
 }
 
@@ -2204,7 +2204,7 @@ public function probation_reminder()
 						'cc' => implode(',', $cc_emails)
 					];
 
-					$this->email_model->send_email_yandex($email_data);
+					$this->email_model->send_email($email_data);
 
 					// Log the sent reminder
 					$message = "Day {$reminder_day}: {$period_name} period for {$staff->name} - {$remaining_days} days remaining";
@@ -2742,7 +2742,7 @@ public function get_staff_info()
 			'cc' => $manager ? $manager['email'] : null
 		];
 
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 	}
 
 	private function build_milestone_email_body($milestone, $days_text)
@@ -3400,7 +3400,7 @@ public function get_staff_info()
 				'body' => $mail_body
 			];
 
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 		}
 
 		// FCM notification
@@ -3768,7 +3768,7 @@ public function get_staff_info()
 				'body' => $mail_body
 			];
 
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 		}
 
 		// FCM notification
@@ -4126,7 +4126,7 @@ public function get_staff_info()
 					'subject' => $mail_subject,
 					'body' => $mail_body
 				];
-				$this->email_model->send_email_yandex($email_data);
+				$this->email_model->send_email($email_data);
 			}
 
 			if (!empty($owner->telegram_id)) {
@@ -4299,7 +4299,7 @@ public function get_staff_info()
 				'subject' => $mail_subject,
 				'body' => $mail_body
 			];
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 		}
 
 		if (!empty($goal['telegram_id'])) {
