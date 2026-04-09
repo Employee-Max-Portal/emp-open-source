@@ -271,7 +271,7 @@ class Todo extends Admin_Controller
 				];
 
 				// 8. Send the email
-				$this->email_model->send_email_yandex($email_data);
+				$this->email_model->send_email($email_data);
 
 			}
 
@@ -496,7 +496,7 @@ class Todo extends Admin_Controller
 				];
 
 				// 8. Send the email
-				$this->email_model->send_email_yandex($email_data);
+				$this->email_model->send_email($email_data);
 
 			}
 
@@ -730,7 +730,7 @@ class Todo extends Admin_Controller
 				/* print_r ($email_data);
 				die(); */
 				// 8. Send the email
-				$this->email_model->send_email_yandex($email_data);
+				$this->email_model->send_email($email_data);
 
 			}
 
@@ -1163,7 +1163,7 @@ public function send_reminder()
 				'body'          => $mail_body,
 			];
 
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 			set_alert('success', 'Reminder sent successfully to ' . $to_name . '.');
 		} else {
 			set_alert('error', 'Staff email not found.');
