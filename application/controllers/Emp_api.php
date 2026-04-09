@@ -491,7 +491,7 @@ public function leaves_post()
 		];
 
 		// Send the email
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 	}
 
     // Get requester details for notification
@@ -1731,7 +1731,7 @@ public function advance_salary_request()
 		];
 
 		// Send the email
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 	}
 
     // Get requester details for notification
@@ -2063,7 +2063,7 @@ public function fund_requisition_request()
 			'cc'          => implode(',', $cc_emails),
 		];
 
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 	}
     // Get requester details (name, department) for the notification
     $staff = $this->db->select('id, name, department')
@@ -3293,7 +3293,7 @@ return $this->output
 		];
 
 		// 8. Send the email
-		$this->email_model->send_email_yandex($email_data);
+		$this->email_model->send_email($email_data);
 
 
         // Get staff details for notification
