@@ -191,6 +191,57 @@
 	<section class="panel" id='quick_view'></section>
 </div>
 
+<!-- View Modal -->
+<div class="zoom-anim-dialog modal-block modal-block-lg mfp-hide payroll-t-modal" id="modal_equipment_details" style="width: 100%!important;">
+    <section class="panel">
+        <header class="panel-heading d-flex justify-content-between align-items-center">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <h4 class="panel-title">
+						<i class="fas fa-bars"></i> <?php echo translate('To-Do') . " " . translate('Description'); ?>
+					</h4>
+                </div>
+                <div class="col-md-5 text-right">
+                    <button class="btn btn-primary" onclick="printDescription()">🖨️ Print</button>
+                </div>
+            </div>
+        </header>
+        <div class="panel-body">
+            <div id="equipment_details_view_tray"></div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <button class="btn btn-primary" onclick="printDescription()">🖨️ Print</button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button class="btn btn-default modal-dismiss"><?php echo translate('close'); ?></button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<script>
+function getView(id) {
+    $.ajax({
+        url: base_url + 'todo/get_view_description',
+        type: 'POST',
+        data: { id: id },
+        success: function(response) {
+            $('#equipment_details_view_tray').html(response);
+            $.magnificPopup.open({
+                items: { src: '#modal_equipment_details' },
+                type: 'inline'
+            });
+        },
+        error: function() {
+            alert('Failed to retrieve description.');
+        }
+    });
+}
+</script>
+
 <?php if (get_permission('todo', 'is_add')): ?>
 <!-- Add Modal -->
 <div id="addModal" class="zoom-anim-dialog modal-block mfp-hide modal-block-lg">
@@ -347,40 +398,6 @@
     </section>
 </div>
 	
-<div class="zoom-anim-dialog modal-block modal-block-lg mfp-hide payroll-t-modal" id="modal_equipment_details" style="width: 100%!important;">
-    <section class="panel">
-        <header class="panel-heading d-flex justify-content-between align-items-center">
-            <div class="row">
-                <div class="col-md-6 text-left">
-                    <h4 class="panel-title">
-						<i class="fas fa-bars"></i> <?php echo translate('To-Do') . " " . translate('Description'); ?>
-					</h4>
-                </div>
-                <div class="col-md-5 text-right">
-                    <!-- Print Button in Footer -->
-                    <button class="btn btn-primary" onclick="printDescription()">🖨️ Print</button>
-                </div>
-            </div>
-        </header>
-        <div class="panel-body">
-            <div id="equipment_details_view_tray">
-                <!-- The description content will be loaded here dynamically -->
-            </div>
-        </div>
-        <footer class="panel-footer">
-            <div class="row">
-                <div class="col-md-6 text-left">
-                    <!-- Print Button in Footer -->
-                    <button class="btn btn-primary" onclick="printDescription()">🖨️ Print</button>
-                </div>
-                <div class="col-md-6 text-right">
-                    <button class="btn btn-default modal-dismiss"><?php echo translate('close'); ?></button>
-                </div>
-            </div>
-        </footer>
-    </section>
-</div>
-
 <?php endif; ?>
 
 <!-- JS to Toggle Custom Input -->
@@ -399,32 +416,6 @@
     });
 </script>
 
-
-<script>
-function getView(id) {
-    $.ajax({
-        url: base_url + 'todo/get_view_description', // Update the URL to the correct controller path
-        type: 'POST',
-        data: { id: id },
-        success: function(response) {
-            // Inject the response into the modal
-            $('#equipment_details_view_tray').html(response);
-
-            // Open the modal
-            $.magnificPopup.open({
-                items: {
-                    src: '#modal_equipment_details'
-                },
-                type: 'inline'
-            });
-        },
-        error: function() {
-            alert('Failed to retrieve description.');
-        }
-    });
-}
-
-</script>
 
 <script type="text/javascript">
 	$(document).ready(function () {
