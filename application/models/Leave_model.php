@@ -81,12 +81,12 @@ class Leave_model extends MY_Model
 
     // Filter by user role
     if (!empty($userRole) && $userRole !== 'all') {
-        $this->db->where('la.role_id', $userRole);
+        $this->db->where('lc.role', $userRole);
     }
 
     // Filter by branch
     if (!empty($branch_id) && $branch_id !== 'all') {
-        $this->db->where('la.branch_id', $branch_id);
+        $this->db->where('s.branch_id', $branch_id);
     }
 
 	$this->db->where('lc.active', 1);
