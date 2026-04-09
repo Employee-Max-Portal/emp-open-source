@@ -1,41 +1,38 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'superman');
-define('DB_PASSWORD', 'Sup3rM@n_2025!');
-define('DB_NAME', 'sohub_emp');
- 
-/* Attempt to connect to MySQL database */
-$link = $con = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
+$db_config_path = __DIR__ . '/../../application/config/database.php';
+
+if (!file_exists($db_config_path)) {
+    die(json_encode(['status' => 'error', 'message' => 'Database config file not found.']));
 }
 
+// Load CI database config into $db array
+require_once $db_config_path;
 
-$sql = "SELECT * FROM email_config where id=1";
-$result = mysqli_query($link, $sql);
+$active = $db[$active_group];
 
-if ($result) {
-    // Check if there are rows in the result set
-    if (mysqli_num_rows($result) > 0) {
-        // Fetch and display each row's data
-        while ($row = mysqli_fetch_assoc($result)) {
-            $email = $row['email'];
-            $email_protocol = $row['email_protocol'];
-            $smtp_host = $row['smtp_host'];
-            $smtp_user = $row['smtp_user'];
-            $smtp_pass = $row['smtp_pass'];
-            $smtp_port = $row['smtp_port'];
-            $smtp_encryption = $row['smtp_encryption'];
-        }
-    } else {
-        echo "No rows found in email_config.";
-    }
+$link = $con = mysqli_connect(
+    $active['hostname'],
+    $active['username'],
+    $active['password'],
+    $active['database']
+);
 
-    // Free result set
+if ($link === false) {
+    die(json_encode(['status' => 'error', 'message' => 'DB connection failed: ' . mysqli_connect_error()]));
+}
+
+$result = mysqli_query($link, "SELECT * FROM email_config WHERE id = 1 LIMIT 1");
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $email            = $row['email'];
+    $email_protocol   = $row['email_protocol'] ?? 'smtp';
+    $smtp_host        = $row['smtp_host'];
+    $smtp_user        = $row['smtp_user'];
+    $smtp_pass        = $row['smtp_pass'];
+    $smtp_port        = $row['smtp_port'];
+    $smtp_encryption  = $row['smtp_encryption'];
     mysqli_free_result($result);
-} 
-
-?>
+} else {
+    die(json_encode(['status' => 'error', 'message' => 'No email config found.']));
+}
