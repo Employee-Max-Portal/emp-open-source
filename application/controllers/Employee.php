@@ -885,13 +885,13 @@ class Employee extends Admin_Controller
                     }
                 }
                 if ($err_msg != null) {
-                    $msgRes = $i . ' Students Have Been Successfully Added. <br>';
+                    $msgRes = $i . ' Employees Have Been Successfully Added. <br>';
                     $msgRes .= $err_msg;
                     echo json_encode(array('status' => 'errlist', 'errMsg' => $msgRes));
                     exit();
                 }
                 if ($i > 0) {
-                    set_alert('success', $i . ' Students Have Been Successfully Added');
+                    set_alert('success', $i . ' Employees Have Been Successfully Added');
                 }
             } else {
                 set_alert('error', translate('invalid_csv_file'));
