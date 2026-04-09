@@ -214,7 +214,7 @@ class Employee extends Admin_Controller
 					
 					
 					// Send the email
-					$this->email_model->send_email_yandex($email_data);
+					$this->email_model->send_email($email_data);
                 set_alert('success', translate('user_authenticated_successfully'));
             } else {
                 set_alert('error', translate('authentication_failed'));
