@@ -1689,6 +1689,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveBtn = document.getElementById('savebtn');
     
     form.addEventListener('submit', function(e) {
+        var descContent = $('#task_description').summernote('isEmpty');
+        if (descContent) {
+            e.preventDefault();
+            alert('<?= translate('description') ?> is required.');
+            return;
+        }
+
         saveBtn.disabled = true;
         saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing';
         
