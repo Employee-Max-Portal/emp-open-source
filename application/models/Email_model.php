@@ -50,7 +50,7 @@ class Email_model extends MY_Model
 
 
 
-public function send_email_yandex($email_data)
+public function send_email($email_data)
 {
     // Prepare and log the email data
     log_message('debug', 'Sending email to: ' . $email_data['to_email']);
