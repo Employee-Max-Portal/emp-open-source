@@ -78,8 +78,8 @@ public function send()
                 $mail->SMTPAuth   = true;
                 $mail->Username   = $config['smtp_user'];
                 $mail->Password   = $config['smtp_pass'];
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                $mail->Port       = $config['smtp_port'];
+                $mail->SMTPSecure = $config['smtp_encryption'];
+                $mail->Port       = (int)$config['smtp_port'];
 
                 // Recipients
                 $mail->setFrom($this->input->post('from_email'));
