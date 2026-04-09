@@ -129,7 +129,7 @@ class Event extends Admin_Controller
 				'cc'            => implode(',', $cc_emails),
 			];
 
-			$this->email_model->send_email_yandex($email_data);
+			$this->email_model->send_email($email_data);
 
             // AJAX response
             echo json_encode(array(
